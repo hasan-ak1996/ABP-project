@@ -6,7 +6,7 @@ using Volo.Abp.Application.Dtos;
 
 namespace AbpIoTest.Item
 {
-    public class UpdateItemInputDTO : EntityDto<int>
+    public class UpdateItemInputDTO
     {
 
         [Required]

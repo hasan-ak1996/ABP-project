@@ -4,15 +4,17 @@ using AbpIoTest.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Volo.Abp.EntityFrameworkCore;
 
 namespace AbpIoTest.Migrations
 {
     [DbContext(typeof(AbpIoTestMigrationsDbContext))]
-    partial class AbpIoTestMigrationsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201208120025_update2-item")]
+    partial class update2item
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

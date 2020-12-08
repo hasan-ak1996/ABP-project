@@ -1,0 +1,312 @@
+<div class="container">
+    <form
+    class="form-horizontal"
+    autocomplete="off"
+    #editOrder2Form="ngForm"
+    (ngSubmit)="editOrder2Form.valid && save()"
+    >
+        <h3 >{{ "::Edit Order" | abpLocalization }}</h3>
+        <div class="modal-body">
+            <div class="form-group row required">
+                <label class="col-md-2 col-form-label" for="orderName">
+                {{ "::Order Name" | abpLocalization }}
+                </label>
+                <div class="col-md-9">
+                    <input
+                    [class.is-invalid]="editOrder2Form.submitted && !nameModel.valid"
+                    type="text"
+                    class="form-control"
+                    name="name"
+                    id="orderName"
+                    required
+                    maxlength="32"
+                    [(ngModel)]="order.name"
+                    #nameModel="ngModel"
+                    #nameEl
+                    />
+                    <div 
+                        *ngIf="editOrder2Form.submitted && !nameModel.valid">
+                        <div *ngIf="nameModel.errors.required" class="error invalid-feedback d-block ng-star-inserted">
+                            order Name is required
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row required">
+                <label class="col-md-2 col-form-label" for="orderNo">
+                    {{ "::Order.No" | abpLocalization }}
+                </label>
+                <div class="col-md-9">
+                    <input
+                    [class.is-invalid]="editOrder2Form.submitted && !orderNoModel.valid"
+                    type="number"
+                    class="form-control"
+                    name="orderNo"
+                    id="orderNo"
+                    required
+                    maxlength="32"
+                    [(ngModel)]="order.orderNo"
+                    #orderNoModel="ngModel"
+                    #orderNoEl
+                    />
+                    <div 
+                        *ngIf="editOrder2Form.submitted && !orderNoModel.valid">
+                        <div *ngIf="orderNoModel.errors.required" class="error invalid-feedback d-block ng-star-inserted">
+                            orderNo is required
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row required">
+                <label class="col-md-2 col-form-label" for="empolyeeName">
+                    {{ "::Employee Name" | abpLocalization }}
+                </label>
+                <div class="col-md-9">
+                    <select 
+                    [(ngModel)]="order.empolyeeName"
+                    name="employeeName"
+                    id="empolyeeName"
+                    [class.is-invalid]="editOrder2Form.submitted && !empolyeeNameModel.value"
+                    class="form-control" 
+                    #empolyeeNameModel="ngModel"
+                    >
+                        <option value="" selected>--selecte employee--</option>
+                        <option *ngFor="let user of users" [value]="user">
+                            {{user}}
+                        </option>
+                    </select>
+                    <div *ngIf="editOrder2Form.submitted && !empolyeeNameModel.value">
+                        <div 
+                            class="error invalid-feedback d-block ng-star-inserted">
+                            Empolyee Name is required
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row required">
+                <label class="col-md-2 col-form-label" for="totalPriceOrder">
+                    {{ "::Total Price" | abpLocalization }}
+                </label>
+                <div class="col-md-9">
+                    <input
+                    type="number"
+                    class="form-control"
+                    name="totalPrice"
+                    id="totalPriceOrder"
+                    disabled
+                    maxlength="32"
+                    [(ngModel)]="order.totalPrice"
+                    #totalPriceModel="ngModel"
+                    #totalPriceEl
+                    />
+                </div>
+            </div>
+
+            <div class="form-group row required">
+                <label class="col-md-2 col-form-label" for="orderDate">
+                    {{ "::Order Date" | abpLocalization }}
+                </label>
+                <div class="col-md-9">
+                    <input
+                    [class.is-invalid]="editOrder2Form.submitted && !orderDateModel.valid"
+                    type="date"
+                    class="form-control"
+                    name="orderDate"
+                    id="orderDate"
+                    required
+                    maxlength="32"
+                    [(ngModel)]="order.orderDate"
+                    #orderDateModel="ngModel"
+                    #orderDateEl
+                    />
+                    <div 
+                        *ngIf="editOrder2Form.submitted && !orderDateModel.valid">
+                        <div *ngIf="orderDateModel.errors.required" class="error invalid-feedback d-block ng-star-inserted">
+                            Order Date is required
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row mb-0">
+                <label class="col-md-2 col-form-label">
+                  {{ "::IsSubmit" | abpLocalization }}
+                </label>
+                <div class="col-md-9">
+                    <div class="custom-control custom-checkbox">
+                        <input
+                        type="checkbox"
+                        class="custom-control-input"
+                        name="isSubmit"
+                        id="isSubmit"
+                        [(ngModel)]="order.isSubmit"
+                        />
+                        <label class="custom-control-label mt-2" for="isSubmit"></label>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-hover text-nowrap">
+                <thead class="bg-light">
+                    <th> {{ "::Name" | abpLocalization }}</th>
+                    <th> {{ "::Price" | abpLocalization }}</th>
+                    <th> {{ "::Quantity" | abpLocalization }}</th>
+                    <th> {{ "::Total Price" | abpLocalization }}</th>
+                    
+                    <th style="width: 200px;">
+                        <a href="javascript:;" class="btn btn-primary" (click)="createItem()">
+                            <i class="fa fa-plus-square"></i>
+                            {{ "::Add item" | abpLocalization }}
+                        </a>
+                    </th>
+                </thead>
+                <tbody>
+                    <tr *ngIf="!items.length">
+                        <td class="text-center font-italic" colspan="7">
+                            {{ "::No item selected for this order" | abpLocalization }}
+                        </td>
+                    </tr>
+                    <tr *ngFor = "let item of items; let i=index">
+                        <td>{{item.name}}</td>
+                        <td>{{item.price}}</td>
+                        <td>{{item.quantity}}</td>
+                        <td>{{item.totalPrice}}</td>
+                        <td>
+                            <button type="button" class="btn btn-sm bg-secondary" (click)="editItem(item.id)">
+                                <i class="fas fa-pencil-alt"></i>
+                                {{ "::Edit" | abpLocalization }}
+                            </button>
+                            <button type="button" class="btn btn-sm bg-danger mx-2" (click)="delete(item.id)">
+                                <i class="fas fa-trash"></i>
+                                {{ "::Delete" | abpLocalization }}
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="form-group">
+                <button class="btn btn-primary ml-auto" type="submit"> {{ "::Save" | abpLocalization }}</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<!-- Add the modal here -->
+<abp-modal [(visible)]="isModalOpen">
+    <ng-template #abpHeader>
+      <h3>{{ (item.id ? '::Edit Item' : '::New Item' ) | abpLocalization }}</h3>
+    </ng-template>
+  
+    <ng-template #abpBody>
+        <form class="form-horizontal" autocomplete="off" [formGroup]="Itemform"
+        (ngSubmit)="saveItem()">
+            <div class="row">
+                <div class="col-md-6">
+
+                    <div class="form-group">
+
+                        <label for="name">
+                            {{ "::Item Name" | abpLocalization }}
+                        </label>
+                        <input 
+                        [class.is-invalid]="isValidFormSubmitted != null && !isValidFormSubmitted && Itemform.get('name').hasError('required')"
+                        class="form-control"
+                        type="text"
+                        formControlName="name"
+                        name="name" 
+                        id="name" 
+                        required 
+                        maxlength="32"
+                        >
+
+                        <div *ngIf=" isValidFormSubmitted != null && !isValidFormSubmitted && Itemform.get('name').hasError('required')"
+                        class="error invalid-feedback d-block ng-star-inserted">
+                            Item Name is required
+                        </div>
+                    </div>
+
+                      
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Price">
+                            {{ "::Price" | abpLocalization }}
+                        </label>
+                        <input 
+                        [class.is-invalid]="isValidFormSubmitted != null && !isValidFormSubmitted && Itemform.get('price').hasError('required')"
+                        class="form-control"
+                        type="number"
+                        formControlName="price"
+                        name="Price" 
+                        id="Price" 
+                        required 
+                        maxlength="32"
+                        #orderNoEl >
+                        <div *ngIf=" isValidFormSubmitted != null && !isValidFormSubmitted && Itemform.get('price').hasError('required')"
+                        class="error invalid-feedback d-block ng-star-inserted">
+                            Price is required
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="quantity">
+                            {{ "::Quantity" | abpLocalization }}
+                        </label>
+
+                        <input
+                        [class.is-invalid]="isValidFormSubmitted != null && !isValidFormSubmitted && Itemform.get('quantity').hasError('required')"
+                        type="number"
+                        class="form-control"
+                        formControlName="quantity"
+                        (keyup)="UpdateTotal()"
+                        name="quantity"
+                        id="quantity"
+                        required
+                        >
+                        <div *ngIf=" isValidFormSubmitted != null && !isValidFormSubmitted && Itemform.get('quantity').hasError('required')"
+                        class="error invalid-feedback d-block ng-star-inserted">
+                            Quantity is required
+                        </div>
+                       
+                    </div>
+                </div>
+                <div class="col-md-6">
+
+                    <div class="form-group">
+                        <label for="totalPrice">
+                            {{ "::Total Price" | abpLocalization }}
+                        </label>
+                        <input 
+                        [class.is-invalid]="isValidFormSubmitted != null && !isValidFormSubmitted && Itemform.get('totalPrice').hasError('required')"
+                        class="form-control"
+                        type="number" 
+                        formControlName="totalPrice"
+                        name="totalPrice" 
+                        id="totalPrice" 
+                        #totalPriceEl 
+                        
+                        >
+                        <div *ngIf=" isValidFormSubmitted != null && !isValidFormSubmitted && Itemform.get('totalPrice').hasError('required')"
+                        class="error invalid-feedback d-block ng-star-inserted">
+                        Total Price is required
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </form>
+    </ng-template>
+  
+    <ng-template #abpFooter>
+        <button type="button" class="btn btn-secondary" #abpClose>
+            {{ '::Close' | abpLocalization }}
+        </button>
+        <button class="btn btn-primary" (click)="saveItem()">
+            <i class="fa fa-check mr-1"></i>
+        {{ '::Save' | abpLocalization }}
+    </button>
+    </ng-template>
+  </abp-modal>

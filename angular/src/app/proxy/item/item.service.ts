@@ -23,6 +23,13 @@ export class ItemService {
     },
     { apiName: this.apiName });
 
+  getAllItemsForOrderByOrderId = (orderId: number) =>
+    this.restService.request<any, ItemDTO[]>({
+      method: 'GET',
+      url: `/api/app/item/items-for-order/${orderId}`,
+    },
+    { apiName: this.apiName });
+
   getItemByIdById = (id: number) =>
     this.restService.request<any, ItemDTO>({
       method: 'GET',
@@ -30,10 +37,10 @@ export class ItemService {
     },
     { apiName: this.apiName });
 
-  updateItemByInput = (input: UpdateItemInputDTO) =>
+  updateItemByIdAndInput = (id: number, input: UpdateItemInputDTO) =>
     this.restService.request<any, void>({
       method: 'PUT',
-      url: `/api/app/item/item`,
+      url: `/api/app/item/${id}/item`,
       body: input,
     },
     { apiName: this.apiName });

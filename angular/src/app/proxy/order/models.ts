@@ -1,5 +1,4 @@
-import type { AuditedEntityDto } from '@abp/ng.core';
-import type { ItemDTO } from '../item/models';
+import type { AuditedEntityDto, PagedAndSortedResultRequestDto } from '@abp/ng.core';
 
 export interface CreateOrderInputDTO {
   name: string;
@@ -11,6 +10,13 @@ export interface CreateOrderInputDTO {
   totalPrice: number;
 }
 
+export interface GetOrderListDto extends PagedAndSortedResultRequestDto {
+  keyword?: string;
+  isSubmit?: boolean;
+  maxResultCount: number;
+  skipCount: number;
+}
+
 export interface OrderDTO extends AuditedEntityDto<number> {
   name: string;
   orderNo: string;
@@ -18,7 +24,6 @@ export interface OrderDTO extends AuditedEntityDto<number> {
   empolyeeName: string;
   totalPrice: number;
   isSubmit: boolean;
-  items: ItemDTO[];
 }
 
 export interface UpdateOrderInputDTO {
@@ -26,7 +31,7 @@ export interface UpdateOrderInputDTO {
   orderNo: string;
   orderDate: string;
   isSubmit: boolean;
-  lastModificationTime: string;
+  lastModificationTime?: string;
   empolyeeName: string;
   totalPrice: number;
 }

@@ -8,6 +8,7 @@ using Volo.Abp.Domain.Services;
 using System.Linq.Dynamic.Core;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp;
+using Microsoft.EntityFrameworkCore;
 
 namespace AbpIoTest.Order
 {
@@ -40,7 +41,7 @@ namespace AbpIoTest.Order
 
         public async Task<OrderEntity.Order> GetOrderById(int id)
         {
-            return await orderRepository.FirstOrDefaultAsync(o => o.Id == id);
+            return await orderRepository.GetAsync(id);
         }
 
         public async Task UpdateOrder(OrderEntity.Order entity)

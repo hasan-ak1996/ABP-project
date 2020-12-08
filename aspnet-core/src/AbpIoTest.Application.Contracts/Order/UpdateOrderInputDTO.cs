@@ -16,11 +16,9 @@ namespace AbpIoTest.Order
         public string OrderNo { get; set; }
 
         [Required]
-        public string OrderDate { get; set; }
+        public DateTime OrderDate { get; set; }
 
         public bool IsSubmit { get; set; }
-
-        [Required]
         public DateTime LastModificationTime { get; set; }
 
         [Required]

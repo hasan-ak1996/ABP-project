@@ -14,5 +14,6 @@ namespace InterfaceItemManager
         Task CreateItem(Item entity);
         Task DeleteItem(int id);
         Task UpdateItem(Item entity);
+        Task<List<Item>> GetAllItemsForOrder(int orderId);
     }
 }

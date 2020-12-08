@@ -27,17 +27,34 @@ namespace AbpIoTest.Item
             await itemManager.DeleteItem(id);
         }
 
+        public async Task<List<ItemDTO>> GetAllItemsForOrder(int orderId)
+        {
+            var orders =await itemManager.GetAllItemsForOrder(orderId);
+            List<ItemDTO> output = ObjectMapper.Map<List<ItemEntity.Item>, List<ItemDTO>>(orders);
+            return output;
+        }
+
         public async Task<ItemDTO> GetItemById(int id)
         {
             var item = await itemManager.GetItemById(id);
+
             ItemDTO output = ObjectMapper.Map<ItemEntity.Item, ItemDTO>(item);
             return output;
         }
 
-        public async Task UpdateItem(UpdateItemInputDTO input)
+        public async Task UpdateItem(int id,UpdateItemInputDTO input)
         {
-            ItemEntity.Item output = ObjectMapper.Map<UpdateItemInputDTO, ItemEntity.Item>(input);
-            await itemManager.UpdateItem(output);
+            var item = await itemManager.GetItemById(id);
+
+            item.Name = input.Name;
+            item.Price = input.Price;
+            item.Quantity = input.Quantity;
+            item.TotalPrice = input.TotalPrice;
+
+            await itemManager.UpdateItem(item);
+
+  
+
         }
     }
 }

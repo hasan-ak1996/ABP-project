@@ -1,0 +1,131 @@
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6">
+                <h1>{{ "::Create Order" | abpLocalization }}</h1>
+            </div>
+        </div>
+    </div>
+</section>
+    <div class="container-fluid">
+        <form class="form-horizontal" autocomplete="off" [formGroup]="registerForm"
+            (ngSubmit)="save()">
+                <div class="row">
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+
+                            <label for="name">
+                                {{ "::Order Name" | abpLocalization }}
+                            </label>
+                            <input 
+                            class="form-control"
+                            type="text"
+                            formControlName="name"
+                            name="name" 
+                            id="name" 
+                            required 
+                            maxlength="32"
+                            >
+                        </div>
+
+                          
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="orderNo">
+                                {{ "::Order.No" | abpLocalization }}
+                            </label>
+                            <input 
+                            class="form-control"
+                            type="text"
+                            formControlName="orderNo"
+                            name="orderNo" 
+                            id="orderNo" 
+                            required 
+                            maxlength="32"
+                            #orderNoEl >
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="empolyeeName">
+                                {{ "::Employee Name" | abpLocalization }}
+                            </label>
+
+                            <select
+                            class="form-control"
+                            formControlName="empolyeeName"
+                            name="empolyeeName"
+                            id="empolyeeName"
+                            required
+                            >
+                              <option>--</option>
+                              <option *ngFor="let user of users" [value]="user">
+                                {{user}}
+                              </option>
+                            </select>
+                           
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            <label for="totalPrice">
+                                {{ "::Total Price" | abpLocalization }}
+                            </label>
+                            <input 
+                            class="form-control"
+                            type="number" 
+                            formControlName="totalPrice"
+                            name="totalPrice" 
+                            id="totalPrice" 
+                            #totalPriceEl 
+                            disabled
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group" >
+                            <label for="orderDate">
+                                {{ "::Order Date" | abpLocalization }}
+                            </label>
+    
+
+                            <input 
+                            class="form-control"
+                            name="orderDate" 
+                            id="orderDate"
+                            type="date"
+                            required 
+                            formControlName="datetime"
+                            >
+                        </div>
+                    </div>
+
+                </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <input
+                    name="isSubmit"
+                    id="isSubmit"
+                    color="primary"
+                    formControlName="isSubmit"
+                    type="checkbox"
+                    >
+                        {{ "::IsSubmit" | abpLocalization }}
+                </div>
+            </div>
+
+            <div class="form-group mt-3 mb-0">
+                <button class="btn btn-primary" type="submit" ><i class="fa fa-database"></i>{{ "::Submit Master" | abpLocalization }}</button>
+                <button class="btn btn-primary ml-2" (click)="goToViewOrders()">{{ "::View Orders" | abpLocalization }}</button>    
+     
+            </div>
+        </form>
+    </div>

@@ -14,13 +14,11 @@ namespace AbpIoTest.Order
         [Required]
         public string OrderNo { get; set; }
         [Required]
-        public string OrderDate { get; set; }
+        public DateTime OrderDate { get; set; }
         [Required]
         public string EmpolyeeName { get; set; }
         [Required]
         public decimal TotalPrice { get; set; }
         public bool IsSubmit { get; set; }
-
-        public virtual List<ItemDTO> Items { get; set; }
     }
 }

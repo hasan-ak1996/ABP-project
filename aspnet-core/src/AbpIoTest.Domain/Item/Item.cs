@@ -14,7 +14,6 @@ namespace ItemEntity
         public int Quantity { get; set; }
         public decimal TotalPrice { get; set; }
         public int OrderId { get; set; }
-        public virtual List<Item> Items { get; set; }
 
     }
 }

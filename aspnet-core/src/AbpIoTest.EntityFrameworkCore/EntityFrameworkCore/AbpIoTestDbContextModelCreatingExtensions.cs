@@ -25,8 +25,8 @@ namespace AbpIoTest.EntityFrameworkCore
             builder.Entity<ItemEntity.Item>(b =>
             {
                 b.ToTable(AbpIoTestConsts.DbTablePrefix + "Item", AbpIoTestConsts.DbSchema);
-                b.ConfigureByConvention(); //auto configure for the base class props
-                //...
+                b.ConfigureByConvention();
+                b.HasOne<OrderEntity.Order>().WithMany().HasForeignKey(x => x.OrderId).IsRequired();
             });
         }
     }

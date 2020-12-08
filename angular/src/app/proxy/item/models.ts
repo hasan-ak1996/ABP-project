@@ -1,4 +1,4 @@
-import type { AuditedEntityDto, EntityDto } from '@abp/ng.core';
+import type { AuditedEntityDto } from '@abp/ng.core';
 
 export interface CreateItemInputDTO {
   name: string;
@@ -17,7 +17,7 @@ export interface ItemDTO extends AuditedEntityDto<number> {
   orderId: number;
 }
 
-export interface UpdateItemInputDTO extends EntityDto<number> {
+export interface UpdateItemInputDTO {
   name: string;
   price: number;
   quantity: number;

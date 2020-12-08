@@ -1,0 +1,486 @@
+
+<section class="content-header">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-6">
+          <h1>{{ "::Orders" | abpLocalization }}</h1>
+        </div>
+        <div class="col-6 text-right">
+          <a class="btn btn-primary" href="javascript:;" (click)="goToCreateOrder()">
+            <i class="fa fa-plus-square"></i>
+            {{ "::Create Order" | abpLocalization }}
+          </a>
+        </div>
+      </div>
+    </div>
+</section>
+
+
+<div class="card">
+
+    <div class="card-header">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <button
+              type="button"
+              class="btn bg-blue"
+              (click)="list.page"
+            >
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            name="keyword"
+            [placeholder]="'::SearchWithThreeDot' | abpLocalization"
+            [(ngModel)]="list.filter"
+            (keyup.enter)="list.page"
+          />
+          <div class="input-group-append">
+              <button
+                type="button"
+                class="btn btn-default"
+                (click)="advancedFiltersVisible = !advancedFiltersVisible"
+              >
+                <i
+                  class="fas"
+                  [class.fa-angle-up]="advancedFiltersVisible"
+                  [class.fa-angle-down]="!advancedFiltersVisible"
+                ></i>
+              </button>
+          </div> 
+        </div>
+        <div *ngIf="advancedFiltersVisible" class="card mb-0 mt-1">
+          <div class="card-body">
+            <form class="form-horizontal">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group row mb-0">
+                    <label class="col-md-3 col-form-label">
+                      {{ "::IsSubmit" | abpLocalization }}
+                    </label>
+                    <div class="col-md-9 pt-2">
+                      <div class="custom-control custom-radio d-inline">
+                        <input
+                          type="radio"
+                          class="custom-control-input"
+                          id="isSubmitAll2"
+                          name="isSubmit"
+                          [(ngModel)]="list.filter"
+                          [value]="undefined"
+                          checked
+                        />
+                        <label class="custom-control-label" for="isSubmitAll2">
+                          {{ "::All" | abpLocalization }}
+                        </label>
+                      </div>
+                      <div class="custom-control custom-radio d-inline mx-3">
+                        <input
+                          type="radio"
+                          class="custom-control-input"
+                          id="isSubmitSubmit2"
+                          name="isSubmit"
+                          [(ngModel)]="list.filter"
+                          [value]="true"
+                        />
+                        <label
+                          class="custom-control-label"
+                          for="isSubmitSubmit2"
+                        >
+                          {{ "::Yes" | abpLocalization }}
+                        </label>
+                      </div>
+                      <div class="custom-control custom-radio d-inline">
+                        <input
+                          type="radio"
+                          class="custom-control-input"
+                          id="isSubmitPassive2"
+                          name="isSubmit"
+                          [(ngModel)]="list.filter"
+                          [value]="false"
+                        />
+                        <label
+                          class="custom-control-label"
+                          for="isSubmitPassive2"
+                        >
+                          {{ "::No" | abpLocalization }}
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="card-footer">
+            <button
+              type="button"
+              class="btn bg-blue"
+              (click)="list.filter"
+            >
+              {{ "::Search" | abpLocalization }}
+            </button>
+          </div>
+        </div>
+    </div>
+    <div class="card-body">
+      <ngx-datatable  [rows]="order.items" [count]="order.totalCount" [list]="list" default>
+        <ngx-datatable-column [name]="'::Name' | abpLocalization" prop="name"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'::Order.No' | abpLocalization" prop="orderNo">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.orderNo | abpLocalization }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column [name]="'::OrderDate' | abpLocalization" prop="orderDate">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.orderDate | date }}
+          </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column [name]="'::EmployeeName' | abpLocalization" prop="empolyeeName">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.empolyeeName | abpLocalization }}
+          </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column [name]="'::TotalPrice' | abpLocalization" prop="totalPrice">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              {{ row.totalPrice }}
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column [name]="'::IsSubmit' | abpLocalization" prop="isSubmit">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              {{ row.isSubmit  }}
+            </ng-template>
+          </ngx-datatable-column>
+          
+          <ngx-datatable-column
+            [name]="'::Actions' | abpLocalization"
+            [maxWidth]="300"
+            [sortable]="false"
+            >
+            <ng-template let-row="row" ngx-datatable-cell-template>
+                <div ngbDropdown container="body" class="d-inline-block">
+                    <button
+                      class="btn btn-primary btn-sm dropdown-toggle"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      ngbDropdownToggle
+                    >
+                      <i class="fa fa-cog mr-1"></i>{{ '::Actions' | abpLocalization }}
+                    </button>
+                    <div ngbDropdownMenu>
+                      <button ngbDropdownItem (click)="editOrder(row.id)">
+                        {{ '::Edit' | abpLocalization }}
+                      </button>
+                      <button ngbDropdownItem (click)="deleteOrder(row.id)">
+                        {{ '::Delete' | abpLocalization }}
+                      </button>
+                    </div>
+                  </div>
+            </ng-template>
+        </ngx-datatable-column>
+
+      </ngx-datatable>
+    </div>
+  </div>
+
+
+
+
+
+<!--<section class="content-header">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-6">
+          <h1>{{ "::Orders" | abpLocalization }}</h1>
+        </div>
+        <div class="col-6 text-right">
+          <a mat-raised-button color="primary">
+            <i class="fa fa-plus-square"></i>
+            {{ "::Create Order" | abpLocalization }}
+          </a>
+        </div>
+      </div>
+    </div>
+</section>
+<section class="content px-2">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <button
+                    type="button"
+                    class="btn bg-blue"
+                    (click)="getDataPage(1)"
+                  >
+                    <i class="fas fa-search"></i>
+                  </button>
+                </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="keyword"
+                  [placeholder]="'SearchWithThreeDot' | localize"
+                  [(ngModel)]="keyword"
+                  (keyup.enter)="getDataPage(1)"
+                />
+                <div class="input-group-append">
+                    <button
+                      type="button"
+                      class="btn btn-default"
+                      (click)="advancedFiltersVisible = !advancedFiltersVisible"
+                    >
+                      <i
+                        class="fas"
+                        [class.fa-angle-up]="advancedFiltersVisible"
+                        [class.fa-angle-down]="!advancedFiltersVisible"
+                      ></i>
+                    </button>
+                </div>
+              </div>
+              <div *ngIf="advancedFiltersVisible" class="card mb-0 mt-1">
+                <div class="card-body">
+                  <form class="form-horizontal">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row mb-0">
+                          <label class="col-md-3 col-form-label">
+                            {{ "::IsSubmit" | abpLocalization }}
+                          </label>
+                          <div class="col-md-9 pt-2">
+                            <div class="custom-control custom-radio d-inline">
+                              <input
+                                type="radio"
+                                class="custom-control-input"
+                                id="isSubmitAll"
+                                name="isSubmit"
+                                [(ngModel)]="isSubmit"
+                                [value]="undefined"
+                                checked
+                              />
+                              <label class="custom-control-label" for="isSubmitAll">
+                                {{ "::All" | abpLocalization }}
+                              </label>
+                            </div>
+                            <div class="custom-control custom-radio d-inline mx-3">
+                              <input
+                                type="radio"
+                                class="custom-control-input"
+                                id="isSubmitSubmit"
+                                name="isSubmit"
+                                [(ngModel)]="isSubmit"
+                                [value]="true"
+                              />
+                              <label
+                                class="custom-control-label"
+                                for="isSubmitSubmit"
+                              >
+                                {{ "::Yes" | abpLocalization }}
+                              </label>
+                            </div>
+                            <div class="custom-control custom-radio d-inline">
+                              <input
+                                type="radio"
+                                class="custom-control-input"
+                                id="isSubmitPassive"
+                                name="isSubmit"
+                                [(ngModel)]="isSubmit"
+                                [value]="false"
+                              />
+                              <label
+                                class="custom-control-label"
+                                for="isSubmitPassive"
+                              >
+                                {{ "::No" | abpLocalization }}
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row mt-3">
+                      <div class="col-md-6">
+                        <mat-form-field  
+                        appearance="fill"
+                      
+                        class="w-100"
+                        >
+                            <mat-label for="formDate">
+                                {{ "::From Date" | abpLocalization }}
+                            
+                            </mat-label>
+                            <input 
+                            matInput 
+                            name="formDate" 
+                            id="formDate" 
+                            [(ngModel)]="formDate" 
+                            #orderDateModel="ngModel" 
+                            #orderDateEl
+                            [ngxMatDatetimePicker]="picker"
+                            >
+                             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                             <ngx-mat-datetime-picker #picker 
+                             [enableMeridian]="true"
+                             [showSpinners]="true" 
+                                >
+                             </ngx-mat-datetime-picker>
+    
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                      <mat-form-field  
+                      appearance="fill"
+                    
+                      class="w-100"
+                      >
+                          <mat-label for="toDate">
+                              {{ "::To Date" | abpLocalization }}
+                          
+                          </mat-label>
+                          <input 
+                          matInput 
+                          name="toDate" 
+                          id="toDate" 
+                          [(ngModel)]="toDate" 
+                          #orderDateModel="ngModel" 
+                          #orderDateEl
+                          [ngxMatDatetimePicker]="picker2"
+                          >
+                           <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                           <ngx-mat-datetime-picker #picker2 
+                           [enableMeridian]="true"
+                           [showSpinners]="true" 
+                              >
+                           </ngx-mat-datetime-picker>
+  
+                      </mat-form-field>
+                  </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="card-footer">
+                  <button
+                    type="button"
+                    class="btn bg-blue"
+                    (click)="getDataPage(1)"
+                  >
+                    {{ "::Search" | abpLocalization }}
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-default float-right"
+                    (click)="clearFilters()"
+                  >
+                    {{ "::Clear" | abpLocalization }}
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="card-body table-responsive p-0">
+                <table  class="table table-hover text-nowrap">
+                    <thead class="bg-light">
+                        <tr>
+                            <th> {{ "::Name" | abpLocalization }}</th>
+                            <th> {{ "::Order.No" | abpLocalization }}</th>
+                            <th> {{ "::Order Date" | abpLocalization }}</th>
+                            <th> {{ "::Employee Name" | abpLocalization }}</th>
+                            <th> {{ "::Total Price" | abpLocalization }}</th>
+                            <th> {{ "::is submit" | abpLocalization }}</th>
+                            <th style="width: 100px;">{{ "::Actions" | abpLocalization }}</th>
+                        </tr>
+                    </thead>
+                    <tbody >
+                        <tr *ngIf="!orders.length">
+                            <td class="text-center font-italic" colspan="7">
+                              {{ "::No Orders Created" | abpLocalization }}
+                            </td>
+                        </tr>
+                        <tr  *ngFor = "let order of orders 
+                                      | paginate
+                                      : {
+                                          id: 'server',
+                                          itemsPerPage: pageSize,
+                                          currentPage: pageNumber,
+                                          totalItems: totalItems
+                                        }"
+                        >
+                            <td>{{order.name}}</td>
+                            <td>{{order.orderNo}}</td>
+                            <td>{{order.orderDate}}</td>
+                            <td>{{order.empolyeeName}}</td>
+                            <td>{{order.totalPrice}}</td>
+                            <td>
+                                <div class="custom-control custom-checkbox">
+                                    <input
+                                      type="checkbox"
+                                      class="custom-control-input"
+                                      disabled
+                                      [checked]="order.isSubmit"
+                                    />
+                                    <label class="custom-control-label"></label>
+                                </div>
+                            </td>
+                            <td>
+                                <button
+                                type="button"
+                                class="btn btn-sm bg-secondary"
+                                [routerLink] = "['/app/view-orders' , order.id]"
+                                >
+                                <i class="fas fa-pencil-alt"></i>
+                                {{ "::Edit" | abpLocalization }}
+                                </button>
+
+                                <button
+                                type="button"
+                                class="btn btn-sm bg-danger mx-2"
+                                (click)="delete(order)"
+                                > 
+                                <i class="fas fa-trash"></i>
+                                {{ "::Delete" | abpLocalization }}
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+            <div class="card-footer bg-light border-top">
+                <div class="row">
+                  <div class="col-sm-4 col-12 text-sm-left text-center">
+                      <button class="btn btn-secondary" (click)="refresh()">
+                        <i class="fas fa-redo-alt"></i>
+                      </button>
+                  </div>
+                  <div class="col-sm-4 col-12 text-center">
+                    <p class="mb-0 my-2">
+                      {{ "::TotalRecordsCount" | abpLocalization: totalItems }}
+                    </p>
+                  </div>
+                  <div class="col-sm-4 col-12">
+                    <div class="float-sm-right m-auto">
+                      <abp-pagination-controls
+                        id="server"
+                        (pageChange)="getDataPage($event)"
+                      >
+                      </abp-pagination-controls>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+
+
+
+
+
+
+
+
+    
