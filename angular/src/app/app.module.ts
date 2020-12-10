@@ -20,6 +20,11 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatTableModule} from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon';
+import { CustomAttachmentComponent } from './custom-attachment/custom-attachment.component';
+import { FileService } from './file-service.service';
+import {MatButtonModule} from '@angular/material/button';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MaterialFileInputModule } from 'ngx-material-file-input';
 
 @NgModule({
   imports: [
@@ -42,11 +47,14 @@ import {MatIconModule} from '@angular/material/icon';
     MatDatepickerModule,
     MatCheckboxModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonModule,
+    MatNativeDateModule,
+    MaterialFileInputModule,
 
   ],
-  declarations: [AppComponent],
-  providers: [APP_ROUTE_PROVIDER],
+  declarations: [AppComponent, CustomAttachmentComponent],
+  providers: [APP_ROUTE_PROVIDER,    { provide: FileService, useClass: FileService }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

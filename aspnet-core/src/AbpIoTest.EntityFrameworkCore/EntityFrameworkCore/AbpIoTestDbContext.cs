@@ -7,6 +7,7 @@ using Volo.Abp.Identity;
 using Volo.Abp.Users.EntityFrameworkCore;
 using OrderEntity;
 using ItemEntity;
+using AttachmentMasterFolder;
 
 namespace AbpIoTest.EntityFrameworkCore
 {
@@ -26,7 +27,11 @@ namespace AbpIoTest.EntityFrameworkCore
 
         public DbSet<OrderEntity.Order> Order { get; set; }
         public DbSet<ItemEntity.Item> Item { get; set; }
+        public DbSet<AttachmentMaster> AttachmentMaster { get; set; }
 
+        public DbSet<AttachmentDetail.AttachmentDetail> AttachmentDetail { get; set; }
+
+        
 
 
         /* Add DbSet properties for your Aggregate Roots / Entities here.

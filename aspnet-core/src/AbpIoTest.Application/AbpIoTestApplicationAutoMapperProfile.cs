@@ -1,7 +1,10 @@
-﻿using AbpIoTest.Item;
+﻿
+using AbpIoTest.AttachmentMaster;
+using AbpIoTest.Item;
 using AbpIoTest.Order;
 using AutoMapper;
 using OrderEntity;
+using AttachmentDetail;
 
 namespace AbpIoTest
 {
@@ -16,6 +19,9 @@ namespace AbpIoTest
             CreateMap<ItemEntity.Item, ItemDTO>();
             CreateMap<CreateItemInputDTO, ItemEntity.Item>();
             CreateMap<UpdateItemInputDTO, ItemEntity.Item>();
+            CreateMap<AttachmentMasterFolder.AttachmentMaster, AttachmentMasterDTO>();
+            CreateMap<AttachmentDetail.AttachmentDetail, AttachmentDetailDTO.AttachmentDetailDTO>();
+            
 
         }
     }

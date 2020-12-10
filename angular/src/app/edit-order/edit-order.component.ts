@@ -1,9 +1,13 @@
 import { ConfirmationService, Confirmation } from '@abp/ng.theme.shared';
+import { HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { AttachmentMasterDTO } from '@proxy/attachment-master';
+import { AttachmentMasterService } from '@proxy/class-attachment-master';
 import { ItemDTO, ItemService } from '@proxy/item';
 import { OrderDTO, OrderService, UpdateOrderInputDTO } from '@proxy/order';
+import { FileService } from '../file-service.service';
 
 @Component({
   selector: 'app-edit-order',
@@ -13,11 +17,15 @@ import { OrderDTO, OrderService, UpdateOrderInputDTO } from '@proxy/order';
 export class EditOrderComponent implements OnInit {
   id: number;
   order = {} as OrderDTO;
-  updatedOrder = {} as UpdateOrderInputDTO
+  updatedOrder = {} as UpdateOrderInputDTO;
+  attachment = {} as AttachmentMasterDTO;
   item = {} as ItemDTO;
   items : ItemDTO[] =[];
+  orderFiles  = [];
+  attachmentId : number;
   users : string [] = ['hasan','ahmad','yaser','wael','omar'];
   isModalOpen = false; 
+    fileResult : any;
   Itemform: FormGroup;
   isValidFormSubmitted = null;
   constructor(  private _router: Router,
@@ -25,14 +33,25 @@ export class EditOrderComponent implements OnInit {
     private orderService: OrderService,
     private itemService: ItemService,
     private confirmation : ConfirmationService ,
+    private attachmentMasterService: AttachmentMasterService,
     private fb: FormBuilder,
-    private router: Router,) { }
+    private router: Router,
+    private fileService: FileService) { }
 
   ngOnInit(): void {
     this._activatedRoute.params.subscribe((params: Params) => {
       this.id = params['id']; });
       this.orderService.getOrderByIdById(this.id).subscribe((res) =>{
         this.order = res;
+
+        console.log();
+        this.attachmentId = this.order.attachmentMasterId;
+        this.attachmentMasterService.getFolderByIdById(this.attachmentId).subscribe((res) =>{
+          this.attachment = res;
+          this.orderFiles = this.attachment.files
+          console.log( this.orderFiles)
+        })
+        console.log( this.attachmentId);
         this.itemService.getAllItemsForOrderByOrderId(this.id).subscribe((res) => {
           this.items = res
           this.UpdateTotalPrice()
@@ -49,6 +68,21 @@ export class EditOrderComponent implements OnInit {
     },0);
     this.order.totalPrice = parseInt((this.order.totalPrice).toFixed(2));
   }
+
+  public downloadFile(element,filename){
+    this.fileService.DownloadFile(filename).subscribe((data) => {
+      this.fileResult = data;
+      //switch (data.type) {
+       // case HttpEventType.Response:
+        //, { type: this.fileResult.body.type }
+          const downloadedFile = new Blob([this.fileResult.body]);
+          console.log(downloadedFile.type);
+          element.download =filename;
+          console.log(URL.createObjectURL(downloadedFile))
+          element.href = URL.createObjectURL(downloadedFile);
+      //}
+    });
+    }
 
   
 
@@ -80,7 +114,8 @@ export class EditOrderComponent implements OnInit {
       if (status === Confirmation.Status.confirm) {
         this.itemService.deleteItemById(id).subscribe(() => {
           this.itemService.getAllItemsForOrderByOrderId(this.id).subscribe((res) => {
-            this.items = res
+            this.items = res;
+            this.UpdateTotalPrice()
           })
         });
       }
@@ -112,11 +147,13 @@ export class EditOrderComponent implements OnInit {
     : this.itemService.createItemByInput(this.Itemform.value);
 
     request.subscribe(() => {
+      this.UpdateTotalPrice()
       this.isModalOpen = false;
       this.Itemform.get("name").setValue('');
       this.item.id =undefined;
       this.itemService.getAllItemsForOrderByOrderId(this.id).subscribe((res) => {
-        this.items = res
+        this.items = res;
+        this.UpdateTotalPrice()
       })
     });
   }

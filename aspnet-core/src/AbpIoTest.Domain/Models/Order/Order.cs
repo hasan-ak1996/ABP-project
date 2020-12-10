@@ -1,4 +1,5 @@
-﻿using ItemEntity;
+﻿using AttachmentMasterFolder;
+using ItemEntity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,8 @@ namespace OrderEntity
         public bool IsSubmit { get; set; }
         public string EmpolyeeName { get; set; }
         public decimal TotalPrice { get; set; }
+        public int AttachmentMasterId { get; set; }
+
 
     }
 }

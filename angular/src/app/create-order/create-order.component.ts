@@ -2,7 +2,9 @@ import { SessionStateService } from '@abp/ng.core';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CreateOrderInputDTO, OrderService } from '@proxy/order';
+import { AttachmentMasterService } from '@proxy/class-attachment-master';
+import { CreateOrderInputDTO, OrderDTO, OrderService } from '@proxy/order';
+import { FileService } from '../file-service.service';
 
 @Component({
   selector: 'app-create-order',
@@ -10,61 +12,69 @@ import { CreateOrderInputDTO, OrderService } from '@proxy/order';
   styleUrls: ['./create-order.component.scss']
 })
 export class CreateOrderComponent implements OnInit {
-  registerForm : FormGroup;
   orderId : number;
+  filesToUpload  : File[];
+  fileResult : any;
+  order = {} as CreateOrderInputDTO;
+ 
+  file;
   users : string [] = ['hasan','ahmad','yaser','wael','omar'];
   isValidFormSubmitted = null;
   constructor( private router: Router,
-    private formBuilder : FormBuilder,
-    private orderService: OrderService
+    private orderService: OrderService,
+    private attachmentMasterService: AttachmentMasterService,
+    private fileService: FileService
     
     ) { }
     
   ngOnInit(): void {
-    
-    this.registerForm = this.formBuilder.group({
-      'name' :new FormControl('',[
-        Validators.required
-      ]), 
-      'orderNo' :new FormControl('',[
-        Validators.required
-      ]),
-      'empolyeeName' :new FormControl('',[
-        Validators.required
-      ]),
-      'totalPrice' :new FormControl(''),
-
-      'datetime' :new FormControl('',[
-        Validators.required
-      ]),
-      'isSubmit' :new FormControl(''),
-      
-    });
-    this.registerForm.get("totalPrice").setValue(0);
+    this.order.totalPrice = 0;
   }
 
   goToViewOrders(){
     this.router.navigate(['/orders']);
   }
 
-  save(): void {
-    console.log(this.registerForm.get("isSubmit").value )
-    this.isValidFormSubmitted = false;
-     if (this.registerForm.invalid) {
-        return;
-     }
-     this.isValidFormSubmitted = true;
 
-     if(this.registerForm.get("isSubmit").value == ''){
-      this.registerForm.get("isSubmit").setValue(false);
-     }
-     this.orderService.createOrderByInput(this.registerForm.value).subscribe(()=>{
-      this.orderService.getLastOrderCreated().subscribe((res)=>{
-        this.orderId = res.id;
-        this.router.navigate(['edit-order' , this.orderId ]);
-        console.log(res.id)
-      })
-     })
+  public fileChange(files) {
+    this.filesToUpload = files;
+    console.log(this.filesToUpload )
+  }
+  save(): void {
+     this.attachmentMasterService.createFolderByEntityName("Order").subscribe(()=>{
+
+     });
+     var formData = new FormData();
+     if(this.filesToUpload == null){
+      formData.append('Files', null);
+    }else{
+      Array.from(this.filesToUpload).map((file) => {
+        return formData.append('Files', file);
+
+      });
+    }
+    this.fileService.UploadFiles(formData).subscribe(res =>{
+      
+    })
+    var attachmentId = new Number() ;
+    
+    this.attachmentMasterService.getLastFolderCreated().subscribe((res) => {
+      this.fileResult=res;
+      attachmentId = this.fileResult.id;
+      this.order.attachmentMasterId =   this.fileResult.id;
+      this.orderService.createOrderByInput(this.order).subscribe(()=>{
+        this.orderService.getLastOrderCreated().subscribe((res)=>{
+          this.orderId = res.id;
+          this.router.navigate(['edit-order' , this.orderId ]);
+        })
+       })
+      //
+    })
+    
+  
+
+    
+ 
 
     }
 

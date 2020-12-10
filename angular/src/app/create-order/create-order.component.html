@@ -8,123 +8,173 @@
     </div>
 </section>
     <div class="container-fluid">
-        <form class="form-horizontal" autocomplete="off" [formGroup]="registerForm"
-            (ngSubmit)="save()">
+        <form class="form-horizontal" autocomplete="off" #createOrder2Form="ngForm"
+            (ngSubmit)="createOrder2Form.valid && save()">
                 <div class="row">
                     <div class="col-md-6">
 
-                        <div class="form-group">
-
-                            <label for="name">
+                        <mat-form-field 
+                        appearance="fill"
+                        [class.mat-form-field-invalid]= "createOrder2Form.submitted && nameModel.hasError('required')"
+                        class="w-100">
+                            <mat-label for="name">
                                 {{ "::Order Name" | abpLocalization }}
-                            </label>
+                            </mat-label>
                             <input 
-                            class="form-control"
+                            matInput 
                             type="text"
-                            formControlName="name"
                             name="name" 
                             id="name" 
                             required 
                             maxlength="32"
+                            [(ngModel)]="order.name" 
+                            #nameModel="ngModel" 
                             >
-                        </div>
+                            <mat-error *ngIf="createOrder2Form.submitted && nameModel.hasError('required')">
+                                Name is required
+                            </mat-error>
+                        </mat-form-field>
 
                           
                     </div>
 
                     <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="orderNo">
-                                {{ "::Order.No" | abpLocalization }}
-                            </label>
-                            <input 
-                            class="form-control"
-                            type="text"
-                            formControlName="orderNo"
-                            name="orderNo" 
-                            id="orderNo" 
-                            required 
-                            maxlength="32"
-                            #orderNoEl >
-                        </div>
+                        <mat-form-field 
+                        appearance="fill"
+                        [class.mat-form-field-invalid]= "createOrder2Form.submitted && orderNoModel.hasError('required')"
+                        class="w-100">
+                                <mat-label for="orderNo">
+                                    {{ "::Order.No" | abpLocalization }}
+                                </mat-label>
+                                <input 
+                                matInput
+                                type="text"
+                                name="orderNo" 
+                                id="orderNo" 
+                                required 
+                                maxlength="32"
+                                [(ngModel)]="order.orderNo" 
+                                #orderNoModel="ngModel" 
+                                #orderNoEl >
+                                <mat-error *ngIf="createOrder2Form.submitted && orderNoModel.hasError('required')">
+                                    Order.No is required
+                                </mat-error>
+                        </mat-form-field>
                     </div>
+
+
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="empolyeeName">
+                        <mat-form-field 
+                        appearance="fill"
+                        [class.mat-form-field-invalid]= "createOrder2Form.submitted && empolyeeNameModel.hasError('required')"
+                        class="w-100">
+                            <mat-label for="empolyeeName">
                                 {{ "::Employee Name" | abpLocalization }}
-                            </label>
+                            </mat-label>
 
-                            <select
-                            class="form-control"
-                            formControlName="empolyeeName"
+                            <mat-select
+                            [(ngModel)]="order.empolyeeName"
                             name="empolyeeName"
                             id="empolyeeName"
+                            #empolyeeNameModel="ngModel"
                             required
                             >
-                              <option>--</option>
-                              <option *ngFor="let user of users" [value]="user">
+                              <mat-option>--</mat-option>
+                              <mat-option *ngFor="let user of users" [value]="user">
                                 {{user}}
-                              </option>
-                            </select>
-                           
-                        </div>
+                              </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="createOrder2Form.submitted && empolyeeNameModel.hasError('required')">Please choose an Employee Name</mat-error>
+                        </mat-form-field >
+
                     </div>
                     <div class="col-md-6">
 
-                        <div class="form-group">
-                            <label for="totalPrice">
+
+                        <mat-form-field 
+                        appearance="fill"
+                        class="w-100">
+                            <mat-label for="totalPrice">
                                 {{ "::Total Price" | abpLocalization }}
-                            </label>
-                            <input 
-                            class="form-control"
+                            </mat-label>
+                            <input
+                            matInput
                             type="number" 
-                            formControlName="totalPrice"
                             name="totalPrice" 
                             id="totalPrice" 
+                            [(ngModel)]="order.totalPrice" 
+                            #totalPriceModel="ngModel"
                             #totalPriceEl 
                             disabled
                             >
-                        </div>
+                        </mat-form-field>
+
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="form-group" >
-                            <label for="orderDate">
-                                {{ "::Order Date" | abpLocalization }}
-                            </label>
-    
 
+                        <mat-form-field  
+                        appearance="fill"
+                        [class.mat-form-field-invalid]= "createOrder2Form.submitted && orderDateModel.hasError('required')"
+                        class="w-100"
+                        >
+                            <mat-label for="orderDate">
+                                {{ "::Order Date" | abpLocalization }}
+                            </mat-label>
                             <input 
-                            class="form-control"
-                            name="orderDate" 
-                            id="orderDate"
+                            matInput 
                             type="date"
+                            name="orderDate" 
+                            id="orderDate" 
                             required 
-                            formControlName="datetime"
+                            [(ngModel)]="order.orderDate" 
+                            #orderDateModel="ngModel" 
                             >
-                        </div>
+                            <mat-error *ngIf="createOrder2Form.submitted && orderDateModel.hasError('required')">
+                                Order Date is required
+                            </mat-error>
+                          </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                        <mat-form-field
+                        appearance="fill"
+                        class="w-100"
+                        >
+                            <mat-label for="file"> {{ "::Attachment" | abpLocalization }}</mat-label>
+                            <ngx-mat-file-input 
+                            id="file"
+                            name="file"
+                            multiple
+                            (change)="fileChange($event.target.files)"
+                            ></ngx-mat-file-input>
+                            <mat-icon matSuffix>folder</mat-icon>
+                    
+                        </mat-form-field>
                     </div>
 
                 </div>
             <div class="row">
                 <div class="col-md-6">
-                    <input
+                    <mat-checkbox
                     name="isSubmit"
                     id="isSubmit"
                     color="primary"
-                    formControlName="isSubmit"
-                    type="checkbox"
+                    [(ngModel)]="order.isSubmit"
                     >
                         {{ "::IsSubmit" | abpLocalization }}
+                    </mat-checkbox>
                 </div>
+
+
+
             </div>
 
             <div class="form-group mt-3 mb-0">
-                <button class="btn btn-primary" type="submit" ><i class="fa fa-database"></i>{{ "::Submit Master" | abpLocalization }}</button>
-                <button class="btn btn-primary ml-2" (click)="goToViewOrders()">{{ "::View Orders" | abpLocalization }}</button>    
+                <button mat-raised-button color="primary" type="submit" ><i class="fa fa-database"></i>{{ "::Submit Master" | abpLocalization }}</button>
+                <button mat-raised-button color="primary" class="ml-2" (click)="goToViewOrders()">{{ "::View Orders" | abpLocalization }}</button>    
      
             </div>
         </form>

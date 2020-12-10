@@ -5,146 +5,173 @@
     #editOrder2Form="ngForm"
     (ngSubmit)="editOrder2Form.valid && save()"
     >
-        <h3 >{{ "::Edit Order" | abpLocalization }}</h3>
+
         <div class="modal-body">
-            <div class="form-group row required">
-                <label class="col-md-2 col-form-label" for="orderName">
-                {{ "::Order Name" | abpLocalization }}
-                </label>
-                <div class="col-md-9">
-                    <input
-                    [class.is-invalid]="editOrder2Form.submitted && !nameModel.valid"
-                    type="text"
-                    class="form-control"
-                    name="name"
-                    id="orderName"
-                    required
-                    maxlength="32"
-                    [(ngModel)]="order.name"
-                    #nameModel="ngModel"
-                    #nameEl
-                    />
-                    <div 
-                        *ngIf="editOrder2Form.submitted && !nameModel.valid">
-                        <div *ngIf="nameModel.errors.required" class="error invalid-feedback d-block ng-star-inserted">
-                            order Name is required
-                        </div>
-                    </div>
+            <h2 >{{ "::Edit Order" | abpLocalization }}</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field 
+                    appearance="fill"
+                    [class.mat-form-field-invalid]="editOrder2Form.submitted && nameModel.hasError('required')"
+                    class="w-100">
+                        <mat-label for="orderName">
+                            {{ "::Order Name" | abpLocalization }}
+                        </mat-label>
+                        <input 
+                        matInput 
+                        type="text"
+                        name="orderName" 
+                        id="orderName" 
+                        required 
+                        maxlength="32"
+                        [(ngModel)]="order.name" 
+                        #nameModel="ngModel" 
+                        >
+                        <mat-error *ngIf="editOrder2Form.submitted && nameModel.hasError('required')">
+                            Name is required
+                        </mat-error>
+                    </mat-form-field>
                 </div>
-            </div>
-            <div class="form-group row required">
-                <label class="col-md-2 col-form-label" for="orderNo">
-                    {{ "::Order.No" | abpLocalization }}
-                </label>
-                <div class="col-md-9">
-                    <input
-                    [class.is-invalid]="editOrder2Form.submitted && !orderNoModel.valid"
-                    type="number"
-                    class="form-control"
-                    name="orderNo"
-                    id="orderNo"
-                    required
-                    maxlength="32"
-                    [(ngModel)]="order.orderNo"
-                    #orderNoModel="ngModel"
-                    #orderNoEl
-                    />
-                    <div 
-                        *ngIf="editOrder2Form.submitted && !orderNoModel.valid">
-                        <div *ngIf="orderNoModel.errors.required" class="error invalid-feedback d-block ng-star-inserted">
-                            orderNo is required
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group row required">
-                <label class="col-md-2 col-form-label" for="empolyeeName">
-                    {{ "::Employee Name" | abpLocalization }}
-                </label>
-                <div class="col-md-9">
-                    <select 
-                    [(ngModel)]="order.empolyeeName"
-                    name="employeeName"
-                    id="empolyeeName"
-                    [class.is-invalid]="editOrder2Form.submitted && !empolyeeNameModel.value"
-                    class="form-control" 
-                    #empolyeeNameModel="ngModel"
-                    >
-                        <option value="" selected>--selecte employee--</option>
-                        <option *ngFor="let user of users" [value]="user">
-                            {{user}}
-                        </option>
-                    </select>
-                    <div *ngIf="editOrder2Form.submitted && !empolyeeNameModel.value">
-                        <div 
-                            class="error invalid-feedback d-block ng-star-inserted">
-                            Empolyee Name is required
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group row required">
-                <label class="col-md-2 col-form-label" for="totalPriceOrder">
-                    {{ "::Total Price" | abpLocalization }}
-                </label>
-                <div class="col-md-9">
-                    <input
-                    type="number"
-                    class="form-control"
-                    name="totalPrice"
-                    id="totalPriceOrder"
-                    disabled
-                    maxlength="32"
-                    [(ngModel)]="order.totalPrice"
-                    #totalPriceModel="ngModel"
-                    #totalPriceEl
-                    />
+
+                <div class="col-md-6">
+                    <mat-form-field 
+                    appearance="fill" 
+                    [class.mat-form-field-invalid]="editOrder2Form.submitted && orderNoModel.hasError('required')"
+                    class="w-100">
+                        <mat-label for="orderNo">
+                            {{ "::Order.No" | abpLocalization }}
+                        </mat-label>
+                        <input 
+                        matInput 
+                        type="text"
+                        name="orderNo" 
+                        id="orderNo" 
+                        required 
+                        maxlength="32"
+                        [(ngModel)]="order.orderNo" 
+                        #orderNoModel="ngModel" 
+                        #orderNoEl >
+                        <mat-error *ngIf="editOrder2Form.submitted && orderNoModel.hasError('required')">
+                            Order.No is required
+                        </mat-error>
+                    </mat-form-field>
                 </div>
             </div>
 
-            <div class="form-group row required">
-                <label class="col-md-2 col-form-label" for="orderDate">
-                    {{ "::Order Date" | abpLocalization }}
-                </label>
-                <div class="col-md-9">
-                    <input
-                    [class.is-invalid]="editOrder2Form.submitted && !orderDateModel.valid"
-                    type="date"
-                    class="form-control"
-                    name="orderDate"
-                    id="orderDate"
-                    required
-                    maxlength="32"
-                    [(ngModel)]="order.orderDate"
-                    #orderDateModel="ngModel"
-                    #orderDateEl
-                    />
-                    <div 
-                        *ngIf="editOrder2Form.submitted && !orderDateModel.valid">
-                        <div *ngIf="orderDateModel.errors.required" class="error invalid-feedback d-block ng-star-inserted">
+
+
+
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field 
+                    appearance="fill"
+                    [class.mat-form-field-invalid]="editOrder2Form.submitted && empolyeeNameModel.hasError('required')"
+                    class="w-100">
+                        <mat-label for="empolyeeName">
+                            {{ "::Employee Name" | abpLocalization }}
+                        </mat-label>
+
+                        <mat-select 
+                        [(ngModel)]="order.empolyeeName"
+                        name="empolyeeName"
+                        id="empolyeeName"
+                        #empolyeeNameModel="ngModel"
+                        required
+                        >
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let user of users" [value]="user">
+                            {{user}}
+                        </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="editOrder2Form.submitted && empolyeeNameModel.hasError('required')">Please choose an Employee Name</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field 
+                    appearance="fill"
+                    class="w-100">
+                        <mat-label for="totalPriceOrder">
+                            {{ "::Total Price" | abpLocalization }}
+                        </mat-label>
+                        <input 
+                        matInput 
+                        type="number" 
+                        name="totalPrice" 
+                        id="totalPriceOrder" 
+                        disabled
+                        maxlength="32" 
+                        [(ngModel)]="order.totalPrice" 
+                        #totalPriceModel="ngModel"
+                        #totalPriceEl 
+                        >
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+
+                    <mat-form-field  
+                    appearance="fill"
+                    [class.mat-form-field-invalid]= "editOrder2Form.submitted && empolyeeNameModel.hasError('required')"
+                    class="w-100"
+                    >
+                        <mat-label for="orderDate">
+                            {{ "::Order Date" | abpLocalization }}
+                        </mat-label>
+                        <input 
+                        matInput 
+                        type="date"
+                        name="orderDate" 
+                        id="orderDate" 
+                        required 
+                        [(ngModel)]="order.orderDate"
+                        #orderDateModel="ngModel"
+                        >
+
+                        <mat-error *ngIf="editOrder2Form.submitted && orderDateModel.hasError('required')">
                             Order Date is required
-                        </div>
-                    </div>
+                        </mat-error>
+                      </mat-form-field>
                 </div>
             </div>
-            <div class="form-group row mb-0">
-                <label class="col-md-2 col-form-label">
-                  {{ "::IsSubmit" | abpLocalization }}
-                </label>
-                <div class="col-md-9">
-                    <div class="custom-control custom-checkbox">
-                        <input
-                        type="checkbox"
-                        class="custom-control-input"
-                        name="isSubmit"
-                        id="isSubmit"
-                        [(ngModel)]="order.isSubmit"
-                        />
-                        <label class="custom-control-label mt-2" for="isSubmit"></label>
-                    </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-checkbox
+                    name="isSubmit"
+                    id="isSubmit"
+                    [(ngModel)]="order.isSubmit"
+                    color="primary"
+                    >
+                        {{ "::IsSubmit" | abpLocalization }}
+                    </mat-checkbox>
                 </div>
             </div>
-            <table class="table table-hover text-nowrap">
+
+            <table class="table table-hover text-nowrap my-4">
+                <thead class="bg-light">
+                    <th> {{ "::File Name" | abpLocalization }}</th>    
+                    <th style="width: 100px;">
+                    </th>
+                </thead>
+                <tbody>
+                    <tr *ngIf="!orderFiles.length">
+                        <td class="text-center font-italic" colspan="3">
+                            {{ "::No files for this order" | abpLocalization }}
+                        </td>
+                    </tr>
+                    <tr *ngFor = "let file of orderFiles; let i=index">
+                        <td>{{file.fileName}}</td>
+                        <td>
+                            <a mat-raised-button color="primary" type="button"  (click)="downloadFile($event.target,file.fileName)">
+                                {{ "::Download File" | abpLocalization }}
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        
+
+            <table class="table table-hover text-nowrap mt-4">
                 <thead class="bg-light">
                     <th> {{ "::Name" | abpLocalization }}</th>
                     <th> {{ "::Price" | abpLocalization }}</th>
@@ -152,7 +179,7 @@
                     <th> {{ "::Total Price" | abpLocalization }}</th>
                     
                     <th style="width: 200px;">
-                        <a href="javascript:;" class="btn btn-primary" (click)="createItem()">
+                        <a mat-raised-button color="primary"  href="javascript:;" (click)="createItem()">
                             <i class="fa fa-plus-square"></i>
                             {{ "::Add item" | abpLocalization }}
                         </a>
@@ -184,7 +211,7 @@
             </table>
 
             <div class="form-group">
-                <button class="btn btn-primary ml-auto" type="submit"> {{ "::Save" | abpLocalization }}</button>
+                <button mat-raised-button color="primary" class="ml-auto" type="submit"> {{ "::Save" | abpLocalization }}</button>
             </div>
         </div>
 

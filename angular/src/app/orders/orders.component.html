@@ -6,7 +6,7 @@
           <h1>{{ "::Orders" | abpLocalization }}</h1>
         </div>
         <div class="col-6 text-right">
-          <a class="btn btn-primary" href="javascript:;" (click)="goToCreateOrder()">
+          <a mat-raised-button color="primary"  href="javascript:;" (click)="goToCreateOrder()">
             <i class="fa fa-plus-square"></i>
             {{ "::Create Order" | abpLocalization }}
           </a>
@@ -164,7 +164,8 @@
             <ng-template let-row="row" ngx-datatable-cell-template>
                 <div ngbDropdown container="body" class="d-inline-block">
                     <button
-                      class="btn btn-primary btn-sm dropdown-toggle"
+                    mat-raised-button color="primary"
+                      class="btn-sm dropdown-toggle"
                       data-toggle="dropdown"
                       aria-haspopup="true"
                       ngbDropdownToggle

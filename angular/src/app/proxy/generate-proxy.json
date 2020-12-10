@@ -3,6 +3,497 @@
     "app"
   ],
   "modules": {
+    "permissionManagement": {
+      "rootPath": "permissionManagement",
+      "remoteServiceName": "AbpPermissionManagement",
+      "controllers": {
+        "Volo.Abp.PermissionManagement.PermissionsController": {
+          "controllerName": "Permissions",
+          "type": "Volo.Abp.PermissionManagement.PermissionsController",
+          "interfaces": [
+            {
+              "type": "Volo.Abp.PermissionManagement.IPermissionAppService"
+            }
+          ],
+          "actions": {
+            "GetAsyncByProviderNameAndProviderKey": {
+              "uniqueName": "GetAsyncByProviderNameAndProviderKey",
+              "name": "GetAsync",
+              "httpMethod": "GET",
+              "url": "api/permission-management/permissions",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "providerName",
+                  "typeAsString": "System.String, System.Private.CoreLib",
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null
+                },
+                {
+                  "name": "providerKey",
+                  "typeAsString": "System.String, System.Private.CoreLib",
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "providerName",
+                  "name": "providerName",
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": ""
+                },
+                {
+                  "nameOnMethod": "providerKey",
+                  "name": "providerKey",
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "Volo.Abp.PermissionManagement.GetPermissionListResultDto",
+                "typeSimple": "Volo.Abp.PermissionManagement.GetPermissionListResultDto"
+              }
+            },
+            "UpdateAsyncByProviderNameAndProviderKeyAndInput": {
+              "uniqueName": "UpdateAsyncByProviderNameAndProviderKeyAndInput",
+              "name": "UpdateAsync",
+              "httpMethod": "PUT",
+              "url": "api/permission-management/permissions",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "providerName",
+                  "typeAsString": "System.String, System.Private.CoreLib",
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null
+                },
+                {
+                  "name": "providerKey",
+                  "typeAsString": "System.String, System.Private.CoreLib",
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null
+                },
+                {
+                  "name": "input",
+                  "typeAsString": "Volo.Abp.PermissionManagement.UpdatePermissionsDto, Volo.Abp.PermissionManagement.Application.Contracts",
+                  "type": "Volo.Abp.PermissionManagement.UpdatePermissionsDto",
+                  "typeSimple": "Volo.Abp.PermissionManagement.UpdatePermissionsDto",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "providerName",
+                  "name": "providerName",
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": ""
+                },
+                {
+                  "nameOnMethod": "providerKey",
+                  "name": "providerKey",
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": ""
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "input",
+                  "type": "Volo.Abp.PermissionManagement.UpdatePermissionsDto",
+                  "typeSimple": "Volo.Abp.PermissionManagement.UpdatePermissionsDto",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "Body",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "System.Void",
+                "typeSimple": "System.Void"
+              }
+            }
+          }
+        }
+      }
+    },
+    "account": {
+      "rootPath": "account",
+      "remoteServiceName": "AbpAccount",
+      "controllers": {
+        "Volo.Abp.Account.Web.Areas.Account.Controllers.AccountController": {
+          "controllerName": "Account",
+          "type": "Volo.Abp.Account.Web.Areas.Account.Controllers.AccountController",
+          "interfaces": [],
+          "actions": {
+            "LoginByLogin": {
+              "uniqueName": "LoginByLogin",
+              "name": "Login",
+              "httpMethod": "POST",
+              "url": "api/account/login",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "login",
+                  "typeAsString": "Volo.Abp.Account.Web.Areas.Account.Controllers.Models.UserLoginInfo, Volo.Abp.Account.Web",
+                  "type": "Volo.Abp.Account.Web.Areas.Account.Controllers.Models.UserLoginInfo",
+                  "typeSimple": "Volo.Abp.Account.Web.Areas.Account.Controllers.Models.UserLoginInfo",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "login",
+                  "name": "login",
+                  "type": "Volo.Abp.Account.Web.Areas.Account.Controllers.Models.UserLoginInfo",
+                  "typeSimple": "Volo.Abp.Account.Web.Areas.Account.Controllers.Models.UserLoginInfo",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "Body",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "Volo.Abp.Account.Web.Areas.Account.Controllers.Models.AbpLoginResult",
+                "typeSimple": "Volo.Abp.Account.Web.Areas.Account.Controllers.Models.AbpLoginResult"
+              }
+            },
+            "Logout": {
+              "uniqueName": "Logout",
+              "name": "Logout",
+              "httpMethod": "GET",
+              "url": "api/account/logout",
+              "supportedVersions": [],
+              "parametersOnMethod": [],
+              "parameters": [],
+              "returnValue": {
+                "type": "System.Void",
+                "typeSimple": "System.Void"
+              }
+            },
+            "CheckPasswordByLogin": {
+              "uniqueName": "CheckPasswordByLogin",
+              "name": "CheckPassword",
+              "httpMethod": "POST",
+              "url": "api/account/check-password",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "login",
+                  "typeAsString": "Volo.Abp.Account.Web.Areas.Account.Controllers.Models.UserLoginInfo, Volo.Abp.Account.Web",
+                  "type": "Volo.Abp.Account.Web.Areas.Account.Controllers.Models.UserLoginInfo",
+                  "typeSimple": "Volo.Abp.Account.Web.Areas.Account.Controllers.Models.UserLoginInfo",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "login",
+                  "name": "login",
+                  "type": "Volo.Abp.Account.Web.Areas.Account.Controllers.Models.UserLoginInfo",
+                  "typeSimple": "Volo.Abp.Account.Web.Areas.Account.Controllers.Models.UserLoginInfo",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "Body",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "Volo.Abp.Account.Web.Areas.Account.Controllers.Models.AbpLoginResult",
+                "typeSimple": "Volo.Abp.Account.Web.Areas.Account.Controllers.Models.AbpLoginResult"
+              }
+            }
+          }
+        },
+        "Volo.Abp.Account.AccountController": {
+          "controllerName": "Account",
+          "type": "Volo.Abp.Account.AccountController",
+          "interfaces": [
+            {
+              "type": "Volo.Abp.Account.IAccountAppService"
+            }
+          ],
+          "actions": {
+            "RegisterAsyncByInput": {
+              "uniqueName": "RegisterAsyncByInput",
+              "name": "RegisterAsync",
+              "httpMethod": "POST",
+              "url": "api/account/register",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "input",
+                  "typeAsString": "Volo.Abp.Account.RegisterDto, Volo.Abp.Account.Application.Contracts",
+                  "type": "Volo.Abp.Account.RegisterDto",
+                  "typeSimple": "Volo.Abp.Account.RegisterDto",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "input",
+                  "name": "input",
+                  "type": "Volo.Abp.Account.RegisterDto",
+                  "typeSimple": "Volo.Abp.Account.RegisterDto",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "Body",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "Volo.Abp.Identity.IdentityUserDto",
+                "typeSimple": "Volo.Abp.Identity.IdentityUserDto"
+              }
+            },
+            "SendPasswordResetCodeAsyncByInput": {
+              "uniqueName": "SendPasswordResetCodeAsyncByInput",
+              "name": "SendPasswordResetCodeAsync",
+              "httpMethod": "POST",
+              "url": "api/account/send-password-reset-code",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "input",
+                  "typeAsString": "Volo.Abp.Account.SendPasswordResetCodeDto, Volo.Abp.Account.Application.Contracts",
+                  "type": "Volo.Abp.Account.SendPasswordResetCodeDto",
+                  "typeSimple": "Volo.Abp.Account.SendPasswordResetCodeDto",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "input",
+                  "name": "input",
+                  "type": "Volo.Abp.Account.SendPasswordResetCodeDto",
+                  "typeSimple": "Volo.Abp.Account.SendPasswordResetCodeDto",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "Body",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "System.Void",
+                "typeSimple": "System.Void"
+              }
+            },
+            "ResetPasswordAsyncByInput": {
+              "uniqueName": "ResetPasswordAsyncByInput",
+              "name": "ResetPasswordAsync",
+              "httpMethod": "POST",
+              "url": "api/account/reset-password",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "input",
+                  "typeAsString": "Volo.Abp.Account.ResetPasswordDto, Volo.Abp.Account.Application.Contracts",
+                  "type": "Volo.Abp.Account.ResetPasswordDto",
+                  "typeSimple": "Volo.Abp.Account.ResetPasswordDto",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "input",
+                  "name": "input",
+                  "type": "Volo.Abp.Account.ResetPasswordDto",
+                  "typeSimple": "Volo.Abp.Account.ResetPasswordDto",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "Body",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "System.Void",
+                "typeSimple": "System.Void"
+              }
+            }
+          }
+        }
+      }
+    },
+    "featureManagement": {
+      "rootPath": "featureManagement",
+      "remoteServiceName": "AbpFeatureManagement",
+      "controllers": {
+        "Volo.Abp.FeatureManagement.FeaturesController": {
+          "controllerName": "Features",
+          "type": "Volo.Abp.FeatureManagement.FeaturesController",
+          "interfaces": [
+            {
+              "type": "Volo.Abp.FeatureManagement.IFeatureAppService"
+            }
+          ],
+          "actions": {
+            "GetAsyncByProviderNameAndProviderKey": {
+              "uniqueName": "GetAsyncByProviderNameAndProviderKey",
+              "name": "GetAsync",
+              "httpMethod": "GET",
+              "url": "api/feature-management/features",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "providerName",
+                  "typeAsString": "System.String, System.Private.CoreLib",
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null
+                },
+                {
+                  "name": "providerKey",
+                  "typeAsString": "System.String, System.Private.CoreLib",
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "providerName",
+                  "name": "providerName",
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": ""
+                },
+                {
+                  "nameOnMethod": "providerKey",
+                  "name": "providerKey",
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "Volo.Abp.FeatureManagement.GetFeatureListResultDto",
+                "typeSimple": "Volo.Abp.FeatureManagement.GetFeatureListResultDto"
+              }
+            },
+            "UpdateAsyncByProviderNameAndProviderKeyAndInput": {
+              "uniqueName": "UpdateAsyncByProviderNameAndProviderKeyAndInput",
+              "name": "UpdateAsync",
+              "httpMethod": "PUT",
+              "url": "api/feature-management/features",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "providerName",
+                  "typeAsString": "System.String, System.Private.CoreLib",
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null
+                },
+                {
+                  "name": "providerKey",
+                  "typeAsString": "System.String, System.Private.CoreLib",
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null
+                },
+                {
+                  "name": "input",
+                  "typeAsString": "Volo.Abp.FeatureManagement.UpdateFeaturesDto, Volo.Abp.FeatureManagement.Application.Contracts",
+                  "type": "Volo.Abp.FeatureManagement.UpdateFeaturesDto",
+                  "typeSimple": "Volo.Abp.FeatureManagement.UpdateFeaturesDto",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "providerName",
+                  "name": "providerName",
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": ""
+                },
+                {
+                  "nameOnMethod": "providerKey",
+                  "name": "providerKey",
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": ""
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "input",
+                  "type": "Volo.Abp.FeatureManagement.UpdateFeaturesDto",
+                  "typeSimple": "Volo.Abp.FeatureManagement.UpdateFeaturesDto",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "Body",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "System.Void",
+                "typeSimple": "System.Void"
+              }
+            }
+          }
+        }
+      }
+    },
     "identity": {
       "rootPath": "identity",
       "remoteServiceName": "AbpIdentity",
@@ -932,6 +1423,104 @@
       "rootPath": "app",
       "remoteServiceName": "Default",
       "controllers": {
+        "ClassAttachmentMaster.AttachmentMasterAppService": {
+          "controllerName": "AttachmentMaster",
+          "type": "ClassAttachmentMaster.AttachmentMasterAppService",
+          "interfaces": [
+            {
+              "type": "Volo.Abp.Validation.IValidationEnabled"
+            },
+            {
+              "type": "Volo.Abp.Auditing.IAuditingEnabled"
+            },
+            {
+              "type": "AbpIoTest.AttachmentMaster.IAttachmentMasterAppService"
+            }
+          ],
+          "actions": {
+            "CreateFolderByEntityName": {
+              "uniqueName": "CreateFolderByEntityName",
+              "name": "CreateFolder",
+              "httpMethod": "POST",
+              "url": "api/app/attachment-master/folder",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "entityName",
+                  "typeAsString": "System.String, System.Private.CoreLib",
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "entityName",
+                  "name": "entityName",
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "System.Void",
+                "typeSimple": "System.Void"
+              }
+            },
+            "GetFolderByIdById": {
+              "uniqueName": "GetFolderByIdById",
+              "name": "GetFolderById",
+              "httpMethod": "GET",
+              "url": "api/app/attachment-master/{id}/folder-by-id",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "id",
+                  "typeAsString": "System.Int32, System.Private.CoreLib",
+                  "type": "System.Int32",
+                  "typeSimple": "number",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "id",
+                  "name": "id",
+                  "type": "System.Int32",
+                  "typeSimple": "number",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": [],
+                  "bindingSourceId": "Path",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "AbpIoTest.AttachmentMaster.AttachmentMasterDTO",
+                "typeSimple": "AbpIoTest.AttachmentMaster.AttachmentMasterDTO"
+              }
+            },
+            "GetLastFolderCreated": {
+              "uniqueName": "GetLastFolderCreated",
+              "name": "GetLastFolderCreated",
+              "httpMethod": "GET",
+              "url": "api/app/attachment-master/last-folder-created",
+              "supportedVersions": [],
+              "parametersOnMethod": [],
+              "parameters": [],
+              "returnValue": {
+                "type": "AbpIoTest.AttachmentMaster.AttachmentMasterDTO",
+                "typeSimple": "AbpIoTest.AttachmentMaster.AttachmentMasterDTO"
+              }
+            }
+          }
+        },
         "AbpIoTest.Order.OrderAppService": {
           "controllerName": "Order",
           "type": "AbpIoTest.Order.OrderAppService",
@@ -1403,6 +1992,156 @@
         }
       }
     },
+    "abp": {
+      "rootPath": "abp",
+      "remoteServiceName": "abp",
+      "controllers": {
+        "Pages.Abp.MultiTenancy.AbpTenantController": {
+          "controllerName": "AbpTenant",
+          "type": "Pages.Abp.MultiTenancy.AbpTenantController",
+          "interfaces": [
+            {
+              "type": "Volo.Abp.AspNetCore.Mvc.MultiTenancy.IAbpTenantAppService"
+            }
+          ],
+          "actions": {
+            "FindTenantByNameAsyncByName": {
+              "uniqueName": "FindTenantByNameAsyncByName",
+              "name": "FindTenantByNameAsync",
+              "httpMethod": "GET",
+              "url": "api/abp/multi-tenancy/tenants/by-name/{name}",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "name",
+                  "typeAsString": "System.String, System.Private.CoreLib",
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "name",
+                  "name": "name",
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": [],
+                  "bindingSourceId": "Path",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "Volo.Abp.AspNetCore.Mvc.MultiTenancy.FindTenantResultDto",
+                "typeSimple": "Volo.Abp.AspNetCore.Mvc.MultiTenancy.FindTenantResultDto"
+              }
+            },
+            "FindTenantByIdAsyncById": {
+              "uniqueName": "FindTenantByIdAsyncById",
+              "name": "FindTenantByIdAsync",
+              "httpMethod": "GET",
+              "url": "api/abp/multi-tenancy/tenants/by-id/{id}",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "id",
+                  "typeAsString": "System.Guid, System.Private.CoreLib",
+                  "type": "System.Guid",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "id",
+                  "name": "id",
+                  "type": "System.Guid",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": [],
+                  "bindingSourceId": "Path",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "Volo.Abp.AspNetCore.Mvc.MultiTenancy.FindTenantResultDto",
+                "typeSimple": "Volo.Abp.AspNetCore.Mvc.MultiTenancy.FindTenantResultDto"
+              }
+            }
+          }
+        },
+        "Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationController": {
+          "controllerName": "AbpApplicationConfiguration",
+          "type": "Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationController",
+          "interfaces": [
+            {
+              "type": "Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.IAbpApplicationConfigurationAppService"
+            }
+          ],
+          "actions": {
+            "GetAsync": {
+              "uniqueName": "GetAsync",
+              "name": "GetAsync",
+              "httpMethod": "GET",
+              "url": "api/abp/application-configuration",
+              "supportedVersions": [],
+              "parametersOnMethod": [],
+              "parameters": [],
+              "returnValue": {
+                "type": "Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.ApplicationConfigurationDto",
+                "typeSimple": "Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.ApplicationConfigurationDto"
+              }
+            }
+          }
+        },
+        "Volo.Abp.AspNetCore.Mvc.ApiExploring.AbpApiDefinitionController": {
+          "controllerName": "AbpApiDefinition",
+          "type": "Volo.Abp.AspNetCore.Mvc.ApiExploring.AbpApiDefinitionController",
+          "interfaces": [],
+          "actions": {
+            "GetByModel": {
+              "uniqueName": "GetByModel",
+              "name": "Get",
+              "httpMethod": "GET",
+              "url": "api/abp/api-definition",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "model",
+                  "typeAsString": "Volo.Abp.Http.Modeling.ApplicationApiDescriptionModelRequestDto, Volo.Abp.Http",
+                  "type": "Volo.Abp.Http.Modeling.ApplicationApiDescriptionModelRequestDto",
+                  "typeSimple": "Volo.Abp.Http.Modeling.ApplicationApiDescriptionModelRequestDto",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "model",
+                  "name": "IncludeTypes",
+                  "type": "System.Boolean",
+                  "typeSimple": "boolean",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "model"
+                }
+              ],
+              "returnValue": {
+                "type": "Volo.Abp.Http.Modeling.ApplicationApiDescriptionModel",
+                "typeSimple": "Volo.Abp.Http.Modeling.ApplicationApiDescriptionModel"
+              }
+            }
+          }
+        }
+      }
+    },
     "multi-tenancy": {
       "rootPath": "multi-tenancy",
       "remoteServiceName": "AbpTenantManagement",
@@ -1762,1240 +2501,9 @@
           }
         }
       }
-    },
-    "abp": {
-      "rootPath": "abp",
-      "remoteServiceName": "abp",
-      "controllers": {
-        "Pages.Abp.MultiTenancy.AbpTenantController": {
-          "controllerName": "AbpTenant",
-          "type": "Pages.Abp.MultiTenancy.AbpTenantController",
-          "interfaces": [
-            {
-              "type": "Volo.Abp.AspNetCore.Mvc.MultiTenancy.IAbpTenantAppService"
-            }
-          ],
-          "actions": {
-            "FindTenantByNameAsyncByName": {
-              "uniqueName": "FindTenantByNameAsyncByName",
-              "name": "FindTenantByNameAsync",
-              "httpMethod": "GET",
-              "url": "api/abp/multi-tenancy/tenants/by-name/{name}",
-              "supportedVersions": [],
-              "parametersOnMethod": [
-                {
-                  "name": "name",
-                  "typeAsString": "System.String, System.Private.CoreLib",
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null
-                }
-              ],
-              "parameters": [
-                {
-                  "nameOnMethod": "name",
-                  "name": "name",
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": [],
-                  "bindingSourceId": "Path",
-                  "descriptorName": ""
-                }
-              ],
-              "returnValue": {
-                "type": "Volo.Abp.AspNetCore.Mvc.MultiTenancy.FindTenantResultDto",
-                "typeSimple": "Volo.Abp.AspNetCore.Mvc.MultiTenancy.FindTenantResultDto"
-              }
-            },
-            "FindTenantByIdAsyncById": {
-              "uniqueName": "FindTenantByIdAsyncById",
-              "name": "FindTenantByIdAsync",
-              "httpMethod": "GET",
-              "url": "api/abp/multi-tenancy/tenants/by-id/{id}",
-              "supportedVersions": [],
-              "parametersOnMethod": [
-                {
-                  "name": "id",
-                  "typeAsString": "System.Guid, System.Private.CoreLib",
-                  "type": "System.Guid",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null
-                }
-              ],
-              "parameters": [
-                {
-                  "nameOnMethod": "id",
-                  "name": "id",
-                  "type": "System.Guid",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": [],
-                  "bindingSourceId": "Path",
-                  "descriptorName": ""
-                }
-              ],
-              "returnValue": {
-                "type": "Volo.Abp.AspNetCore.Mvc.MultiTenancy.FindTenantResultDto",
-                "typeSimple": "Volo.Abp.AspNetCore.Mvc.MultiTenancy.FindTenantResultDto"
-              }
-            }
-          }
-        },
-        "Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationController": {
-          "controllerName": "AbpApplicationConfiguration",
-          "type": "Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationController",
-          "interfaces": [
-            {
-              "type": "Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.IAbpApplicationConfigurationAppService"
-            }
-          ],
-          "actions": {
-            "GetAsync": {
-              "uniqueName": "GetAsync",
-              "name": "GetAsync",
-              "httpMethod": "GET",
-              "url": "api/abp/application-configuration",
-              "supportedVersions": [],
-              "parametersOnMethod": [],
-              "parameters": [],
-              "returnValue": {
-                "type": "Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.ApplicationConfigurationDto",
-                "typeSimple": "Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.ApplicationConfigurationDto"
-              }
-            }
-          }
-        },
-        "Volo.Abp.AspNetCore.Mvc.ApiExploring.AbpApiDefinitionController": {
-          "controllerName": "AbpApiDefinition",
-          "type": "Volo.Abp.AspNetCore.Mvc.ApiExploring.AbpApiDefinitionController",
-          "interfaces": [],
-          "actions": {
-            "GetByModel": {
-              "uniqueName": "GetByModel",
-              "name": "Get",
-              "httpMethod": "GET",
-              "url": "api/abp/api-definition",
-              "supportedVersions": [],
-              "parametersOnMethod": [
-                {
-                  "name": "model",
-                  "typeAsString": "Volo.Abp.Http.Modeling.ApplicationApiDescriptionModelRequestDto, Volo.Abp.Http",
-                  "type": "Volo.Abp.Http.Modeling.ApplicationApiDescriptionModelRequestDto",
-                  "typeSimple": "Volo.Abp.Http.Modeling.ApplicationApiDescriptionModelRequestDto",
-                  "isOptional": false,
-                  "defaultValue": null
-                }
-              ],
-              "parameters": [
-                {
-                  "nameOnMethod": "model",
-                  "name": "IncludeTypes",
-                  "type": "System.Boolean",
-                  "typeSimple": "boolean",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "ModelBinding",
-                  "descriptorName": "model"
-                }
-              ],
-              "returnValue": {
-                "type": "Volo.Abp.Http.Modeling.ApplicationApiDescriptionModel",
-                "typeSimple": "Volo.Abp.Http.Modeling.ApplicationApiDescriptionModel"
-              }
-            }
-          }
-        }
-      }
-    },
-    "account": {
-      "rootPath": "account",
-      "remoteServiceName": "AbpAccount",
-      "controllers": {
-        "Volo.Abp.Account.Web.Areas.Account.Controllers.AccountController": {
-          "controllerName": "Account",
-          "type": "Volo.Abp.Account.Web.Areas.Account.Controllers.AccountController",
-          "interfaces": [],
-          "actions": {
-            "LoginByLogin": {
-              "uniqueName": "LoginByLogin",
-              "name": "Login",
-              "httpMethod": "POST",
-              "url": "api/account/login",
-              "supportedVersions": [],
-              "parametersOnMethod": [
-                {
-                  "name": "login",
-                  "typeAsString": "Volo.Abp.Account.Web.Areas.Account.Controllers.Models.UserLoginInfo, Volo.Abp.Account.Web",
-                  "type": "Volo.Abp.Account.Web.Areas.Account.Controllers.Models.UserLoginInfo",
-                  "typeSimple": "Volo.Abp.Account.Web.Areas.Account.Controllers.Models.UserLoginInfo",
-                  "isOptional": false,
-                  "defaultValue": null
-                }
-              ],
-              "parameters": [
-                {
-                  "nameOnMethod": "login",
-                  "name": "login",
-                  "type": "Volo.Abp.Account.Web.Areas.Account.Controllers.Models.UserLoginInfo",
-                  "typeSimple": "Volo.Abp.Account.Web.Areas.Account.Controllers.Models.UserLoginInfo",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Body",
-                  "descriptorName": ""
-                }
-              ],
-              "returnValue": {
-                "type": "Volo.Abp.Account.Web.Areas.Account.Controllers.Models.AbpLoginResult",
-                "typeSimple": "Volo.Abp.Account.Web.Areas.Account.Controllers.Models.AbpLoginResult"
-              }
-            },
-            "Logout": {
-              "uniqueName": "Logout",
-              "name": "Logout",
-              "httpMethod": "GET",
-              "url": "api/account/logout",
-              "supportedVersions": [],
-              "parametersOnMethod": [],
-              "parameters": [],
-              "returnValue": {
-                "type": "System.Void",
-                "typeSimple": "System.Void"
-              }
-            },
-            "CheckPasswordByLogin": {
-              "uniqueName": "CheckPasswordByLogin",
-              "name": "CheckPassword",
-              "httpMethod": "POST",
-              "url": "api/account/check-password",
-              "supportedVersions": [],
-              "parametersOnMethod": [
-                {
-                  "name": "login",
-                  "typeAsString": "Volo.Abp.Account.Web.Areas.Account.Controllers.Models.UserLoginInfo, Volo.Abp.Account.Web",
-                  "type": "Volo.Abp.Account.Web.Areas.Account.Controllers.Models.UserLoginInfo",
-                  "typeSimple": "Volo.Abp.Account.Web.Areas.Account.Controllers.Models.UserLoginInfo",
-                  "isOptional": false,
-                  "defaultValue": null
-                }
-              ],
-              "parameters": [
-                {
-                  "nameOnMethod": "login",
-                  "name": "login",
-                  "type": "Volo.Abp.Account.Web.Areas.Account.Controllers.Models.UserLoginInfo",
-                  "typeSimple": "Volo.Abp.Account.Web.Areas.Account.Controllers.Models.UserLoginInfo",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Body",
-                  "descriptorName": ""
-                }
-              ],
-              "returnValue": {
-                "type": "Volo.Abp.Account.Web.Areas.Account.Controllers.Models.AbpLoginResult",
-                "typeSimple": "Volo.Abp.Account.Web.Areas.Account.Controllers.Models.AbpLoginResult"
-              }
-            }
-          }
-        },
-        "Volo.Abp.Account.AccountController": {
-          "controllerName": "Account",
-          "type": "Volo.Abp.Account.AccountController",
-          "interfaces": [
-            {
-              "type": "Volo.Abp.Account.IAccountAppService"
-            }
-          ],
-          "actions": {
-            "RegisterAsyncByInput": {
-              "uniqueName": "RegisterAsyncByInput",
-              "name": "RegisterAsync",
-              "httpMethod": "POST",
-              "url": "api/account/register",
-              "supportedVersions": [],
-              "parametersOnMethod": [
-                {
-                  "name": "input",
-                  "typeAsString": "Volo.Abp.Account.RegisterDto, Volo.Abp.Account.Application.Contracts",
-                  "type": "Volo.Abp.Account.RegisterDto",
-                  "typeSimple": "Volo.Abp.Account.RegisterDto",
-                  "isOptional": false,
-                  "defaultValue": null
-                }
-              ],
-              "parameters": [
-                {
-                  "nameOnMethod": "input",
-                  "name": "input",
-                  "type": "Volo.Abp.Account.RegisterDto",
-                  "typeSimple": "Volo.Abp.Account.RegisterDto",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Body",
-                  "descriptorName": ""
-                }
-              ],
-              "returnValue": {
-                "type": "Volo.Abp.Identity.IdentityUserDto",
-                "typeSimple": "Volo.Abp.Identity.IdentityUserDto"
-              }
-            },
-            "SendPasswordResetCodeAsyncByInput": {
-              "uniqueName": "SendPasswordResetCodeAsyncByInput",
-              "name": "SendPasswordResetCodeAsync",
-              "httpMethod": "POST",
-              "url": "api/account/send-password-reset-code",
-              "supportedVersions": [],
-              "parametersOnMethod": [
-                {
-                  "name": "input",
-                  "typeAsString": "Volo.Abp.Account.SendPasswordResetCodeDto, Volo.Abp.Account.Application.Contracts",
-                  "type": "Volo.Abp.Account.SendPasswordResetCodeDto",
-                  "typeSimple": "Volo.Abp.Account.SendPasswordResetCodeDto",
-                  "isOptional": false,
-                  "defaultValue": null
-                }
-              ],
-              "parameters": [
-                {
-                  "nameOnMethod": "input",
-                  "name": "input",
-                  "type": "Volo.Abp.Account.SendPasswordResetCodeDto",
-                  "typeSimple": "Volo.Abp.Account.SendPasswordResetCodeDto",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Body",
-                  "descriptorName": ""
-                }
-              ],
-              "returnValue": {
-                "type": "System.Void",
-                "typeSimple": "System.Void"
-              }
-            },
-            "ResetPasswordAsyncByInput": {
-              "uniqueName": "ResetPasswordAsyncByInput",
-              "name": "ResetPasswordAsync",
-              "httpMethod": "POST",
-              "url": "api/account/reset-password",
-              "supportedVersions": [],
-              "parametersOnMethod": [
-                {
-                  "name": "input",
-                  "typeAsString": "Volo.Abp.Account.ResetPasswordDto, Volo.Abp.Account.Application.Contracts",
-                  "type": "Volo.Abp.Account.ResetPasswordDto",
-                  "typeSimple": "Volo.Abp.Account.ResetPasswordDto",
-                  "isOptional": false,
-                  "defaultValue": null
-                }
-              ],
-              "parameters": [
-                {
-                  "nameOnMethod": "input",
-                  "name": "input",
-                  "type": "Volo.Abp.Account.ResetPasswordDto",
-                  "typeSimple": "Volo.Abp.Account.ResetPasswordDto",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Body",
-                  "descriptorName": ""
-                }
-              ],
-              "returnValue": {
-                "type": "System.Void",
-                "typeSimple": "System.Void"
-              }
-            }
-          }
-        }
-      }
-    },
-    "featureManagement": {
-      "rootPath": "featureManagement",
-      "remoteServiceName": "AbpFeatureManagement",
-      "controllers": {
-        "Volo.Abp.FeatureManagement.FeaturesController": {
-          "controllerName": "Features",
-          "type": "Volo.Abp.FeatureManagement.FeaturesController",
-          "interfaces": [
-            {
-              "type": "Volo.Abp.FeatureManagement.IFeatureAppService"
-            }
-          ],
-          "actions": {
-            "GetAsyncByProviderNameAndProviderKey": {
-              "uniqueName": "GetAsyncByProviderNameAndProviderKey",
-              "name": "GetAsync",
-              "httpMethod": "GET",
-              "url": "api/feature-management/features",
-              "supportedVersions": [],
-              "parametersOnMethod": [
-                {
-                  "name": "providerName",
-                  "typeAsString": "System.String, System.Private.CoreLib",
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null
-                },
-                {
-                  "name": "providerKey",
-                  "typeAsString": "System.String, System.Private.CoreLib",
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null
-                }
-              ],
-              "parameters": [
-                {
-                  "nameOnMethod": "providerName",
-                  "name": "providerName",
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "ModelBinding",
-                  "descriptorName": ""
-                },
-                {
-                  "nameOnMethod": "providerKey",
-                  "name": "providerKey",
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "ModelBinding",
-                  "descriptorName": ""
-                }
-              ],
-              "returnValue": {
-                "type": "Volo.Abp.FeatureManagement.GetFeatureListResultDto",
-                "typeSimple": "Volo.Abp.FeatureManagement.GetFeatureListResultDto"
-              }
-            },
-            "UpdateAsyncByProviderNameAndProviderKeyAndInput": {
-              "uniqueName": "UpdateAsyncByProviderNameAndProviderKeyAndInput",
-              "name": "UpdateAsync",
-              "httpMethod": "PUT",
-              "url": "api/feature-management/features",
-              "supportedVersions": [],
-              "parametersOnMethod": [
-                {
-                  "name": "providerName",
-                  "typeAsString": "System.String, System.Private.CoreLib",
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null
-                },
-                {
-                  "name": "providerKey",
-                  "typeAsString": "System.String, System.Private.CoreLib",
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null
-                },
-                {
-                  "name": "input",
-                  "typeAsString": "Volo.Abp.FeatureManagement.UpdateFeaturesDto, Volo.Abp.FeatureManagement.Application.Contracts",
-                  "type": "Volo.Abp.FeatureManagement.UpdateFeaturesDto",
-                  "typeSimple": "Volo.Abp.FeatureManagement.UpdateFeaturesDto",
-                  "isOptional": false,
-                  "defaultValue": null
-                }
-              ],
-              "parameters": [
-                {
-                  "nameOnMethod": "providerName",
-                  "name": "providerName",
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "ModelBinding",
-                  "descriptorName": ""
-                },
-                {
-                  "nameOnMethod": "providerKey",
-                  "name": "providerKey",
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "ModelBinding",
-                  "descriptorName": ""
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "input",
-                  "type": "Volo.Abp.FeatureManagement.UpdateFeaturesDto",
-                  "typeSimple": "Volo.Abp.FeatureManagement.UpdateFeaturesDto",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Body",
-                  "descriptorName": ""
-                }
-              ],
-              "returnValue": {
-                "type": "System.Void",
-                "typeSimple": "System.Void"
-              }
-            }
-          }
-        }
-      }
-    },
-    "permissionManagement": {
-      "rootPath": "permissionManagement",
-      "remoteServiceName": "AbpPermissionManagement",
-      "controllers": {
-        "Volo.Abp.PermissionManagement.PermissionsController": {
-          "controllerName": "Permissions",
-          "type": "Volo.Abp.PermissionManagement.PermissionsController",
-          "interfaces": [
-            {
-              "type": "Volo.Abp.PermissionManagement.IPermissionAppService"
-            }
-          ],
-          "actions": {
-            "GetAsyncByProviderNameAndProviderKey": {
-              "uniqueName": "GetAsyncByProviderNameAndProviderKey",
-              "name": "GetAsync",
-              "httpMethod": "GET",
-              "url": "api/permission-management/permissions",
-              "supportedVersions": [],
-              "parametersOnMethod": [
-                {
-                  "name": "providerName",
-                  "typeAsString": "System.String, System.Private.CoreLib",
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null
-                },
-                {
-                  "name": "providerKey",
-                  "typeAsString": "System.String, System.Private.CoreLib",
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null
-                }
-              ],
-              "parameters": [
-                {
-                  "nameOnMethod": "providerName",
-                  "name": "providerName",
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "ModelBinding",
-                  "descriptorName": ""
-                },
-                {
-                  "nameOnMethod": "providerKey",
-                  "name": "providerKey",
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "ModelBinding",
-                  "descriptorName": ""
-                }
-              ],
-              "returnValue": {
-                "type": "Volo.Abp.PermissionManagement.GetPermissionListResultDto",
-                "typeSimple": "Volo.Abp.PermissionManagement.GetPermissionListResultDto"
-              }
-            },
-            "UpdateAsyncByProviderNameAndProviderKeyAndInput": {
-              "uniqueName": "UpdateAsyncByProviderNameAndProviderKeyAndInput",
-              "name": "UpdateAsync",
-              "httpMethod": "PUT",
-              "url": "api/permission-management/permissions",
-              "supportedVersions": [],
-              "parametersOnMethod": [
-                {
-                  "name": "providerName",
-                  "typeAsString": "System.String, System.Private.CoreLib",
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null
-                },
-                {
-                  "name": "providerKey",
-                  "typeAsString": "System.String, System.Private.CoreLib",
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null
-                },
-                {
-                  "name": "input",
-                  "typeAsString": "Volo.Abp.PermissionManagement.UpdatePermissionsDto, Volo.Abp.PermissionManagement.Application.Contracts",
-                  "type": "Volo.Abp.PermissionManagement.UpdatePermissionsDto",
-                  "typeSimple": "Volo.Abp.PermissionManagement.UpdatePermissionsDto",
-                  "isOptional": false,
-                  "defaultValue": null
-                }
-              ],
-              "parameters": [
-                {
-                  "nameOnMethod": "providerName",
-                  "name": "providerName",
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "ModelBinding",
-                  "descriptorName": ""
-                },
-                {
-                  "nameOnMethod": "providerKey",
-                  "name": "providerKey",
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "ModelBinding",
-                  "descriptorName": ""
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "input",
-                  "type": "Volo.Abp.PermissionManagement.UpdatePermissionsDto",
-                  "typeSimple": "Volo.Abp.PermissionManagement.UpdatePermissionsDto",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Body",
-                  "descriptorName": ""
-                }
-              ],
-              "returnValue": {
-                "type": "System.Void",
-                "typeSimple": "System.Void"
-              }
-            }
-          }
-        }
-      }
     }
   },
   "types": {
-    "Volo.Abp.PermissionManagement.GetPermissionListResultDto": {
-      "baseType": null,
-      "isEnum": false,
-      "enumNames": null,
-      "enumValues": null,
-      "genericArguments": null,
-      "properties": [
-        {
-          "name": "EntityDisplayName",
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": false
-        },
-        {
-          "name": "Groups",
-          "type": "[Volo.Abp.PermissionManagement.PermissionGroupDto]",
-          "typeSimple": "[Volo.Abp.PermissionManagement.PermissionGroupDto]",
-          "isRequired": false
-        }
-      ]
-    },
-    "Volo.Abp.PermissionManagement.PermissionGroupDto": {
-      "baseType": null,
-      "isEnum": false,
-      "enumNames": null,
-      "enumValues": null,
-      "genericArguments": null,
-      "properties": [
-        {
-          "name": "Name",
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": false
-        },
-        {
-          "name": "DisplayName",
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": false
-        },
-        {
-          "name": "Permissions",
-          "type": "[Volo.Abp.PermissionManagement.PermissionGrantInfoDto]",
-          "typeSimple": "[Volo.Abp.PermissionManagement.PermissionGrantInfoDto]",
-          "isRequired": false
-        }
-      ]
-    },
-    "Volo.Abp.PermissionManagement.PermissionGrantInfoDto": {
-      "baseType": null,
-      "isEnum": false,
-      "enumNames": null,
-      "enumValues": null,
-      "genericArguments": null,
-      "properties": [
-        {
-          "name": "Name",
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": false
-        },
-        {
-          "name": "DisplayName",
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": false
-        },
-        {
-          "name": "ParentName",
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": false
-        },
-        {
-          "name": "IsGranted",
-          "type": "System.Boolean",
-          "typeSimple": "boolean",
-          "isRequired": false
-        },
-        {
-          "name": "AllowedProviders",
-          "type": "[System.String]",
-          "typeSimple": "[string]",
-          "isRequired": false
-        },
-        {
-          "name": "GrantedProviders",
-          "type": "[Volo.Abp.PermissionManagement.ProviderInfoDto]",
-          "typeSimple": "[Volo.Abp.PermissionManagement.ProviderInfoDto]",
-          "isRequired": false
-        }
-      ]
-    },
-    "Volo.Abp.PermissionManagement.ProviderInfoDto": {
-      "baseType": null,
-      "isEnum": false,
-      "enumNames": null,
-      "enumValues": null,
-      "genericArguments": null,
-      "properties": [
-        {
-          "name": "ProviderName",
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": false
-        },
-        {
-          "name": "ProviderKey",
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": false
-        }
-      ]
-    },
-    "Volo.Abp.PermissionManagement.UpdatePermissionsDto": {
-      "baseType": null,
-      "isEnum": false,
-      "enumNames": null,
-      "enumValues": null,
-      "genericArguments": null,
-      "properties": [
-        {
-          "name": "Permissions",
-          "type": "[Volo.Abp.PermissionManagement.UpdatePermissionDto]",
-          "typeSimple": "[Volo.Abp.PermissionManagement.UpdatePermissionDto]",
-          "isRequired": false
-        }
-      ]
-    },
-    "Volo.Abp.PermissionManagement.UpdatePermissionDto": {
-      "baseType": null,
-      "isEnum": false,
-      "enumNames": null,
-      "enumValues": null,
-      "genericArguments": null,
-      "properties": [
-        {
-          "name": "Name",
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": false
-        },
-        {
-          "name": "IsGranted",
-          "type": "System.Boolean",
-          "typeSimple": "boolean",
-          "isRequired": false
-        }
-      ]
-    },
-    "Volo.Abp.TenantManagement.TenantDto": {
-      "baseType": "Volo.Abp.Application.Dtos.ExtensibleEntityDto<System.Guid>",
-      "isEnum": false,
-      "enumNames": null,
-      "enumValues": null,
-      "genericArguments": null,
-      "properties": [
-        {
-          "name": "Name",
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": false
-        }
-      ]
-    },
-    "Volo.Abp.Application.Dtos.ExtensibleEntityDto<T0>": {
-      "baseType": "Volo.Abp.ObjectExtending.ExtensibleObject",
-      "isEnum": false,
-      "enumNames": null,
-      "enumValues": null,
-      "genericArguments": [
-        "TKey"
-      ],
-      "properties": [
-        {
-          "name": "Id",
-          "type": "TKey",
-          "typeSimple": "TKey",
-          "isRequired": false
-        }
-      ]
-    },
-    "Volo.Abp.ObjectExtending.ExtensibleObject": {
-      "baseType": null,
-      "isEnum": false,
-      "enumNames": null,
-      "enumValues": null,
-      "genericArguments": null,
-      "properties": [
-        {
-          "name": "ExtraProperties",
-          "type": "{System.String:System.Object}",
-          "typeSimple": "{string:object}",
-          "isRequired": false
-        }
-      ]
-    },
-    "Volo.Abp.TenantManagement.GetTenantsInput": {
-      "baseType": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
-      "isEnum": false,
-      "enumNames": null,
-      "enumValues": null,
-      "genericArguments": null,
-      "properties": [
-        {
-          "name": "Filter",
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": false
-        }
-      ]
-    },
-    "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto": {
-      "baseType": "Volo.Abp.Application.Dtos.PagedResultRequestDto",
-      "isEnum": false,
-      "enumNames": null,
-      "enumValues": null,
-      "genericArguments": null,
-      "properties": [
-        {
-          "name": "Sorting",
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": false
-        }
-      ]
-    },
-    "Volo.Abp.Application.Dtos.PagedResultRequestDto": {
-      "baseType": "Volo.Abp.Application.Dtos.LimitedResultRequestDto",
-      "isEnum": false,
-      "enumNames": null,
-      "enumValues": null,
-      "genericArguments": null,
-      "properties": [
-        {
-          "name": "SkipCount",
-          "type": "System.Int32",
-          "typeSimple": "number",
-          "isRequired": false
-        }
-      ]
-    },
-    "Volo.Abp.Application.Dtos.LimitedResultRequestDto": {
-      "baseType": null,
-      "isEnum": false,
-      "enumNames": null,
-      "enumValues": null,
-      "genericArguments": null,
-      "properties": [
-        {
-          "name": "MaxResultCount",
-          "type": "System.Int32",
-          "typeSimple": "number",
-          "isRequired": false
-        },
-        {
-          "name": "DefaultMaxResultCount",
-          "type": "System.Int32",
-          "typeSimple": "number",
-          "isRequired": false
-        },
-        {
-          "name": "MaxMaxResultCount",
-          "type": "System.Int32",
-          "typeSimple": "number",
-          "isRequired": false
-        }
-      ]
-    },
-    "Volo.Abp.Application.Dtos.PagedResultDto<T0>": {
-      "baseType": "Volo.Abp.Application.Dtos.ListResultDto<T>",
-      "isEnum": false,
-      "enumNames": null,
-      "enumValues": null,
-      "genericArguments": [
-        "T"
-      ],
-      "properties": [
-        {
-          "name": "TotalCount",
-          "type": "System.Int64",
-          "typeSimple": "number",
-          "isRequired": false
-        }
-      ]
-    },
-    "Volo.Abp.Application.Dtos.ListResultDto<T0>": {
-      "baseType": null,
-      "isEnum": false,
-      "enumNames": null,
-      "enumValues": null,
-      "genericArguments": [
-        "T"
-      ],
-      "properties": [
-        {
-          "name": "Items",
-          "type": "[T]",
-          "typeSimple": "[T]",
-          "isRequired": false
-        }
-      ]
-    },
-    "Volo.Abp.TenantManagement.TenantCreateDto": {
-      "baseType": "Volo.Abp.TenantManagement.TenantCreateOrUpdateDtoBase",
-      "isEnum": false,
-      "enumNames": null,
-      "enumValues": null,
-      "genericArguments": null,
-      "properties": [
-        {
-          "name": "AdminEmailAddress",
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": true
-        },
-        {
-          "name": "AdminPassword",
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": true
-        }
-      ]
-    },
-    "Volo.Abp.TenantManagement.TenantCreateOrUpdateDtoBase": {
-      "baseType": "Volo.Abp.ObjectExtending.ExtensibleObject",
-      "isEnum": false,
-      "enumNames": null,
-      "enumValues": null,
-      "genericArguments": null,
-      "properties": [
-        {
-          "name": "Name",
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": true
-        }
-      ]
-    },
-    "Volo.Abp.TenantManagement.TenantUpdateDto": {
-      "baseType": "Volo.Abp.TenantManagement.TenantCreateOrUpdateDtoBase",
-      "isEnum": false,
-      "enumNames": null,
-      "enumValues": null,
-      "genericArguments": null,
-      "properties": []
-    },
-    "Volo.Abp.FeatureManagement.GetFeatureListResultDto": {
-      "baseType": null,
-      "isEnum": false,
-      "enumNames": null,
-      "enumValues": null,
-      "genericArguments": null,
-      "properties": [
-        {
-          "name": "Groups",
-          "type": "[Volo.Abp.FeatureManagement.FeatureGroupDto]",
-          "typeSimple": "[Volo.Abp.FeatureManagement.FeatureGroupDto]",
-          "isRequired": false
-        }
-      ]
-    },
-    "Volo.Abp.FeatureManagement.FeatureGroupDto": {
-      "baseType": null,
-      "isEnum": false,
-      "enumNames": null,
-      "enumValues": null,
-      "genericArguments": null,
-      "properties": [
-        {
-          "name": "Name",
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": false
-        },
-        {
-          "name": "DisplayName",
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": false
-        },
-        {
-          "name": "Features",
-          "type": "[Volo.Abp.FeatureManagement.FeatureDto]",
-          "typeSimple": "[Volo.Abp.FeatureManagement.FeatureDto]",
-          "isRequired": false
-        }
-      ]
-    },
-    "Volo.Abp.FeatureManagement.FeatureDto": {
-      "baseType": null,
-      "isEnum": false,
-      "enumNames": null,
-      "enumValues": null,
-      "genericArguments": null,
-      "properties": [
-        {
-          "name": "Name",
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": false
-        },
-        {
-          "name": "DisplayName",
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": false
-        },
-        {
-          "name": "Value",
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": false
-        },
-        {
-          "name": "Provider",
-          "type": "Volo.Abp.FeatureManagement.FeatureProviderDto",
-          "typeSimple": "Volo.Abp.FeatureManagement.FeatureProviderDto",
-          "isRequired": false
-        },
-        {
-          "name": "Description",
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": false
-        },
-        {
-          "name": "ValueType",
-          "type": "Volo.Abp.Validation.StringValues.IStringValueType",
-          "typeSimple": "Volo.Abp.Validation.StringValues.IStringValueType",
-          "isRequired": false
-        },
-        {
-          "name": "Depth",
-          "type": "System.Int32",
-          "typeSimple": "number",
-          "isRequired": false
-        },
-        {
-          "name": "ParentName",
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": false
-        }
-      ]
-    },
-    "Volo.Abp.FeatureManagement.FeatureProviderDto": {
-      "baseType": null,
-      "isEnum": false,
-      "enumNames": null,
-      "enumValues": null,
-      "genericArguments": null,
-      "properties": [
-        {
-          "name": "Name",
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": false
-        },
-        {
-          "name": "Key",
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": false
-        }
-      ]
-    },
-    "Volo.Abp.Validation.StringValues.IStringValueType": {
-      "baseType": null,
-      "isEnum": false,
-      "enumNames": null,
-      "enumValues": null,
-      "genericArguments": null,
-      "properties": [
-        {
-          "name": "Name",
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": false
-        },
-        {
-          "name": "Item",
-          "type": "System.Object",
-          "typeSimple": "object",
-          "isRequired": false
-        },
-        {
-          "name": "Properties",
-          "type": "{System.String:System.Object}",
-          "typeSimple": "{string:object}",
-          "isRequired": false
-        },
-        {
-          "name": "Validator",
-          "type": "Volo.Abp.Validation.StringValues.IValueValidator",
-          "typeSimple": "Volo.Abp.Validation.StringValues.IValueValidator",
-          "isRequired": false
-        }
-      ]
-    },
-    "Volo.Abp.Validation.StringValues.IValueValidator": {
-      "baseType": null,
-      "isEnum": false,
-      "enumNames": null,
-      "enumValues": null,
-      "genericArguments": null,
-      "properties": [
-        {
-          "name": "Name",
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": false
-        },
-        {
-          "name": "Item",
-          "type": "System.Object",
-          "typeSimple": "object",
-          "isRequired": false
-        },
-        {
-          "name": "Properties",
-          "type": "{System.String:System.Object}",
-          "typeSimple": "{string:object}",
-          "isRequired": false
-        }
-      ]
-    },
-    "Volo.Abp.FeatureManagement.UpdateFeaturesDto": {
-      "baseType": null,
-      "isEnum": false,
-      "enumNames": null,
-      "enumValues": null,
-      "genericArguments": null,
-      "properties": [
-        {
-          "name": "Features",
-          "type": "[Volo.Abp.FeatureManagement.UpdateFeatureDto]",
-          "typeSimple": "[Volo.Abp.FeatureManagement.UpdateFeatureDto]",
-          "isRequired": false
-        }
-      ]
-    },
-    "Volo.Abp.FeatureManagement.UpdateFeatureDto": {
-      "baseType": null,
-      "isEnum": false,
-      "enumNames": null,
-      "enumValues": null,
-      "genericArguments": null,
-      "properties": [
-        {
-          "name": "Name",
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": false
-        },
-        {
-          "name": "Value",
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": false
-        }
-      ]
-    },
-    "Volo.Abp.AspNetCore.Mvc.MultiTenancy.FindTenantResultDto": {
-      "baseType": null,
-      "isEnum": false,
-      "enumNames": null,
-      "enumValues": null,
-      "genericArguments": null,
-      "properties": [
-        {
-          "name": "Success",
-          "type": "System.Boolean",
-          "typeSimple": "boolean",
-          "isRequired": false
-        },
-        {
-          "name": "TenantId",
-          "type": "System.Guid?",
-          "typeSimple": "string?",
-          "isRequired": false
-        },
-        {
-          "name": "Name",
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": false
-        }
-      ]
-    },
     "Volo.Abp.Account.Web.Areas.Account.Controllers.Models.UserLoginInfo": {
       "baseType": null,
       "isEnum": false,
@@ -3247,6 +2755,38 @@
         }
       ]
     },
+    "Volo.Abp.Application.Dtos.ExtensibleEntityDto<T0>": {
+      "baseType": "Volo.Abp.ObjectExtending.ExtensibleObject",
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": [
+        "TKey"
+      ],
+      "properties": [
+        {
+          "name": "Id",
+          "type": "TKey",
+          "typeSimple": "TKey",
+          "isRequired": false
+        }
+      ]
+    },
+    "Volo.Abp.ObjectExtending.ExtensibleObject": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "ExtraProperties",
+          "type": "{System.String:System.Object}",
+          "typeSimple": "{string:object}",
+          "isRequired": false
+        }
+      ]
+    },
     "Volo.Abp.Account.SendPasswordResetCodeDto": {
       "baseType": null,
       "isEnum": false,
@@ -3307,6 +2847,50 @@
         }
       ]
     },
+    "Volo.Abp.AspNetCore.Mvc.MultiTenancy.FindTenantResultDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "Success",
+          "type": "System.Boolean",
+          "typeSimple": "boolean",
+          "isRequired": false
+        },
+        {
+          "name": "TenantId",
+          "type": "System.Guid?",
+          "typeSimple": "string?",
+          "isRequired": false
+        },
+        {
+          "name": "Name",
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false
+        }
+      ]
+    },
+    "Volo.Abp.Application.Dtos.ListResultDto<T0>": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": [
+        "T"
+      ],
+      "properties": [
+        {
+          "name": "Items",
+          "type": "[T]",
+          "typeSimple": "[T]",
+          "isRequired": false
+        }
+      ]
+    },
     "Volo.Abp.Identity.IdentityRoleDto": {
       "baseType": "Volo.Abp.Application.Dtos.ExtensibleEntityDto<System.Guid>",
       "isEnum": false,
@@ -3357,6 +2941,80 @@
           "name": "Filter",
           "type": "System.String",
           "typeSimple": "string",
+          "isRequired": false
+        }
+      ]
+    },
+    "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto": {
+      "baseType": "Volo.Abp.Application.Dtos.PagedResultRequestDto",
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "Sorting",
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false
+        }
+      ]
+    },
+    "Volo.Abp.Application.Dtos.PagedResultRequestDto": {
+      "baseType": "Volo.Abp.Application.Dtos.LimitedResultRequestDto",
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "SkipCount",
+          "type": "System.Int32",
+          "typeSimple": "number",
+          "isRequired": false
+        }
+      ]
+    },
+    "Volo.Abp.Application.Dtos.LimitedResultRequestDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "DefaultMaxResultCount",
+          "type": "System.Int32",
+          "typeSimple": "number",
+          "isRequired": false
+        },
+        {
+          "name": "MaxMaxResultCount",
+          "type": "System.Int32",
+          "typeSimple": "number",
+          "isRequired": false
+        },
+        {
+          "name": "MaxResultCount",
+          "type": "System.Int32",
+          "typeSimple": "number",
+          "isRequired": false
+        }
+      ]
+    },
+    "Volo.Abp.Application.Dtos.PagedResultDto<T0>": {
+      "baseType": "Volo.Abp.Application.Dtos.ListResultDto<T>",
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": [
+        "T"
+      ],
+      "properties": [
+        {
+          "name": "TotalCount",
+          "type": "System.Int64",
+          "typeSimple": "number",
           "isRequired": false
         }
       ]
@@ -3729,6 +3387,446 @@
           "type": "System.String",
           "typeSimple": "string",
           "isRequired": true
+        }
+      ]
+    },
+    "Volo.Abp.PermissionManagement.GetPermissionListResultDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "EntityDisplayName",
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false
+        },
+        {
+          "name": "Groups",
+          "type": "[Volo.Abp.PermissionManagement.PermissionGroupDto]",
+          "typeSimple": "[Volo.Abp.PermissionManagement.PermissionGroupDto]",
+          "isRequired": false
+        }
+      ]
+    },
+    "Volo.Abp.PermissionManagement.PermissionGroupDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "Name",
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false
+        },
+        {
+          "name": "DisplayName",
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false
+        },
+        {
+          "name": "Permissions",
+          "type": "[Volo.Abp.PermissionManagement.PermissionGrantInfoDto]",
+          "typeSimple": "[Volo.Abp.PermissionManagement.PermissionGrantInfoDto]",
+          "isRequired": false
+        }
+      ]
+    },
+    "Volo.Abp.PermissionManagement.PermissionGrantInfoDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "Name",
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false
+        },
+        {
+          "name": "DisplayName",
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false
+        },
+        {
+          "name": "ParentName",
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false
+        },
+        {
+          "name": "IsGranted",
+          "type": "System.Boolean",
+          "typeSimple": "boolean",
+          "isRequired": false
+        },
+        {
+          "name": "AllowedProviders",
+          "type": "[System.String]",
+          "typeSimple": "[string]",
+          "isRequired": false
+        },
+        {
+          "name": "GrantedProviders",
+          "type": "[Volo.Abp.PermissionManagement.ProviderInfoDto]",
+          "typeSimple": "[Volo.Abp.PermissionManagement.ProviderInfoDto]",
+          "isRequired": false
+        }
+      ]
+    },
+    "Volo.Abp.PermissionManagement.ProviderInfoDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "ProviderName",
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false
+        },
+        {
+          "name": "ProviderKey",
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false
+        }
+      ]
+    },
+    "Volo.Abp.PermissionManagement.UpdatePermissionsDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "Permissions",
+          "type": "[Volo.Abp.PermissionManagement.UpdatePermissionDto]",
+          "typeSimple": "[Volo.Abp.PermissionManagement.UpdatePermissionDto]",
+          "isRequired": false
+        }
+      ]
+    },
+    "Volo.Abp.PermissionManagement.UpdatePermissionDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "Name",
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false
+        },
+        {
+          "name": "IsGranted",
+          "type": "System.Boolean",
+          "typeSimple": "boolean",
+          "isRequired": false
+        }
+      ]
+    },
+    "Volo.Abp.TenantManagement.TenantDto": {
+      "baseType": "Volo.Abp.Application.Dtos.ExtensibleEntityDto<System.Guid>",
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "Name",
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false
+        }
+      ]
+    },
+    "Volo.Abp.TenantManagement.GetTenantsInput": {
+      "baseType": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "Filter",
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false
+        }
+      ]
+    },
+    "Volo.Abp.TenantManagement.TenantCreateDto": {
+      "baseType": "Volo.Abp.TenantManagement.TenantCreateOrUpdateDtoBase",
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "AdminEmailAddress",
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": true
+        },
+        {
+          "name": "AdminPassword",
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": true
+        }
+      ]
+    },
+    "Volo.Abp.TenantManagement.TenantCreateOrUpdateDtoBase": {
+      "baseType": "Volo.Abp.ObjectExtending.ExtensibleObject",
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "Name",
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": true
+        }
+      ]
+    },
+    "Volo.Abp.TenantManagement.TenantUpdateDto": {
+      "baseType": "Volo.Abp.TenantManagement.TenantCreateOrUpdateDtoBase",
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": []
+    },
+    "Volo.Abp.FeatureManagement.GetFeatureListResultDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "Groups",
+          "type": "[Volo.Abp.FeatureManagement.FeatureGroupDto]",
+          "typeSimple": "[Volo.Abp.FeatureManagement.FeatureGroupDto]",
+          "isRequired": false
+        }
+      ]
+    },
+    "Volo.Abp.FeatureManagement.FeatureGroupDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "Name",
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false
+        },
+        {
+          "name": "DisplayName",
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false
+        },
+        {
+          "name": "Features",
+          "type": "[Volo.Abp.FeatureManagement.FeatureDto]",
+          "typeSimple": "[Volo.Abp.FeatureManagement.FeatureDto]",
+          "isRequired": false
+        }
+      ]
+    },
+    "Volo.Abp.FeatureManagement.FeatureDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "Name",
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false
+        },
+        {
+          "name": "DisplayName",
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false
+        },
+        {
+          "name": "Value",
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false
+        },
+        {
+          "name": "Provider",
+          "type": "Volo.Abp.FeatureManagement.FeatureProviderDto",
+          "typeSimple": "Volo.Abp.FeatureManagement.FeatureProviderDto",
+          "isRequired": false
+        },
+        {
+          "name": "Description",
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false
+        },
+        {
+          "name": "ValueType",
+          "type": "Volo.Abp.Validation.StringValues.IStringValueType",
+          "typeSimple": "Volo.Abp.Validation.StringValues.IStringValueType",
+          "isRequired": false
+        },
+        {
+          "name": "Depth",
+          "type": "System.Int32",
+          "typeSimple": "number",
+          "isRequired": false
+        },
+        {
+          "name": "ParentName",
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false
+        }
+      ]
+    },
+    "Volo.Abp.FeatureManagement.FeatureProviderDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "Name",
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false
+        },
+        {
+          "name": "Key",
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false
+        }
+      ]
+    },
+    "Volo.Abp.Validation.StringValues.IStringValueType": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "Name",
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false
+        },
+        {
+          "name": "Item",
+          "type": "System.Object",
+          "typeSimple": "object",
+          "isRequired": false
+        },
+        {
+          "name": "Properties",
+          "type": "{System.String:System.Object}",
+          "typeSimple": "{string:object}",
+          "isRequired": false
+        },
+        {
+          "name": "Validator",
+          "type": "Volo.Abp.Validation.StringValues.IValueValidator",
+          "typeSimple": "Volo.Abp.Validation.StringValues.IValueValidator",
+          "isRequired": false
+        }
+      ]
+    },
+    "Volo.Abp.Validation.StringValues.IValueValidator": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "Name",
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false
+        },
+        {
+          "name": "Item",
+          "type": "System.Object",
+          "typeSimple": "object",
+          "isRequired": false
+        },
+        {
+          "name": "Properties",
+          "type": "{System.String:System.Object}",
+          "typeSimple": "{string:object}",
+          "isRequired": false
+        }
+      ]
+    },
+    "Volo.Abp.FeatureManagement.UpdateFeaturesDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "Features",
+          "type": "[Volo.Abp.FeatureManagement.UpdateFeatureDto]",
+          "typeSimple": "[Volo.Abp.FeatureManagement.UpdateFeatureDto]",
+          "isRequired": false
+        }
+      ]
+    },
+    "Volo.Abp.FeatureManagement.UpdateFeatureDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "Name",
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false
+        },
+        {
+          "name": "Value",
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false
         }
       ]
     },
@@ -5026,6 +5124,131 @@
         }
       ]
     },
+    "AbpIoTest.AttachmentMaster.AttachmentMasterDTO": {
+      "baseType": "Volo.Abp.Application.Dtos.AuditedEntityDto<System.Int32>",
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "Files",
+          "type": "[AttachmentDetailDTO.AttachmentDetailDTO]",
+          "typeSimple": "[AttachmentDetailDTO.AttachmentDetailDTO]",
+          "isRequired": false
+        }
+      ]
+    },
+    "Volo.Abp.Application.Dtos.AuditedEntityDto<T0>": {
+      "baseType": "Volo.Abp.Application.Dtos.CreationAuditedEntityDto<TPrimaryKey>",
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": [
+        "TPrimaryKey"
+      ],
+      "properties": [
+        {
+          "name": "LastModificationTime",
+          "type": "System.DateTime?",
+          "typeSimple": "string?",
+          "isRequired": false
+        },
+        {
+          "name": "LastModifierId",
+          "type": "System.Guid?",
+          "typeSimple": "string?",
+          "isRequired": false
+        }
+      ]
+    },
+    "Volo.Abp.Application.Dtos.CreationAuditedEntityDto<T0>": {
+      "baseType": "Volo.Abp.Application.Dtos.EntityDto<TPrimaryKey>",
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": [
+        "TPrimaryKey"
+      ],
+      "properties": [
+        {
+          "name": "CreationTime",
+          "type": "System.DateTime",
+          "typeSimple": "string",
+          "isRequired": false
+        },
+        {
+          "name": "CreatorId",
+          "type": "System.Guid?",
+          "typeSimple": "string?",
+          "isRequired": false
+        }
+      ]
+    },
+    "Volo.Abp.Application.Dtos.EntityDto<T0>": {
+      "baseType": "Volo.Abp.Application.Dtos.EntityDto",
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": [
+        "TKey"
+      ],
+      "properties": [
+        {
+          "name": "Id",
+          "type": "TKey",
+          "typeSimple": "TKey",
+          "isRequired": false
+        }
+      ]
+    },
+    "Volo.Abp.Application.Dtos.EntityDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": []
+    },
+    "AttachmentDetailDTO.AttachmentDetailDTO": {
+      "baseType": "Volo.Abp.Application.Dtos.AuditedEntityDto<System.Int32>",
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "FileName",
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false
+        },
+        {
+          "name": "Extension",
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false
+        },
+        {
+          "name": "TemporaryStatus",
+          "type": "System.Decimal",
+          "typeSimple": "number",
+          "isRequired": false
+        },
+        {
+          "name": "FileSize",
+          "type": "System.Decimal",
+          "typeSimple": "number",
+          "isRequired": false
+        },
+        {
+          "name": "AttachmentMasterId",
+          "type": "System.Int32",
+          "typeSimple": "number",
+          "isRequired": false
+        }
+      ]
+    },
     "AbpIoTest.Order.CreateOrderInputDTO": {
       "baseType": null,
       "isEnum": false,
@@ -5074,6 +5297,12 @@
           "type": "System.Decimal",
           "typeSimple": "number",
           "isRequired": true
+        },
+        {
+          "name": "AttachmentMasterId",
+          "type": "System.Int32",
+          "typeSimple": "number",
+          "isRequired": false
         }
       ]
     },
@@ -5152,79 +5381,14 @@
           "type": "System.Boolean",
           "typeSimple": "boolean",
           "isRequired": false
-        }
-      ]
-    },
-    "Volo.Abp.Application.Dtos.AuditedEntityDto<T0>": {
-      "baseType": "Volo.Abp.Application.Dtos.CreationAuditedEntityDto<TPrimaryKey>",
-      "isEnum": false,
-      "enumNames": null,
-      "enumValues": null,
-      "genericArguments": [
-        "TPrimaryKey"
-      ],
-      "properties": [
-        {
-          "name": "LastModificationTime",
-          "type": "System.DateTime?",
-          "typeSimple": "string?",
-          "isRequired": false
         },
         {
-          "name": "LastModifierId",
-          "type": "System.Guid?",
-          "typeSimple": "string?",
+          "name": "AttachmentMasterId",
+          "type": "System.Int32",
+          "typeSimple": "number",
           "isRequired": false
         }
       ]
-    },
-    "Volo.Abp.Application.Dtos.CreationAuditedEntityDto<T0>": {
-      "baseType": "Volo.Abp.Application.Dtos.EntityDto<TPrimaryKey>",
-      "isEnum": false,
-      "enumNames": null,
-      "enumValues": null,
-      "genericArguments": [
-        "TPrimaryKey"
-      ],
-      "properties": [
-        {
-          "name": "CreationTime",
-          "type": "System.DateTime",
-          "typeSimple": "string",
-          "isRequired": false
-        },
-        {
-          "name": "CreatorId",
-          "type": "System.Guid?",
-          "typeSimple": "string?",
-          "isRequired": false
-        }
-      ]
-    },
-    "Volo.Abp.Application.Dtos.EntityDto<T0>": {
-      "baseType": "Volo.Abp.Application.Dtos.EntityDto",
-      "isEnum": false,
-      "enumNames": null,
-      "enumValues": null,
-      "genericArguments": [
-        "TKey"
-      ],
-      "properties": [
-        {
-          "name": "Id",
-          "type": "TKey",
-          "typeSimple": "TKey",
-          "isRequired": false
-        }
-      ]
-    },
-    "Volo.Abp.Application.Dtos.EntityDto": {
-      "baseType": null,
-      "isEnum": false,
-      "enumNames": null,
-      "enumValues": null,
-      "genericArguments": null,
-      "properties": []
     },
     "AbpIoTest.Order.UpdateOrderInputDTO": {
       "baseType": null,

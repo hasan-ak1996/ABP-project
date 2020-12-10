@@ -19,6 +19,7 @@
     "@abp/ng.tenant-management": "~4.0.0",
     "@abp/ng.theme.basic": "~4.0.0",
     "@abp/ng.theme.shared": "~4.0.0",
+    "@angular-material-components/datetime-picker": "^2.0.4",
     "@angular/animations": "~11.0.0",
     "@angular/cdk": "^11.0.2",
     "@angular/common": "~11.0.0",
@@ -29,6 +30,8 @@
     "@angular/platform-browser": "~11.0.0",
     "@angular/platform-browser-dynamic": "~11.0.0",
     "@angular/router": "~11.0.0",
+    "ngx-mat-datetime-picker": "^2.0.1",
+    "ngx-material-file-input": "^2.1.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

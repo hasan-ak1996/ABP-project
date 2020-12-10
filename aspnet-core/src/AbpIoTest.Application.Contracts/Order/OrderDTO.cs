@@ -20,5 +20,6 @@ namespace AbpIoTest.Order
         [Required]
         public decimal TotalPrice { get; set; }
         public bool IsSubmit { get; set; }
+        public int AttachmentMasterId { get; set; }
     }
 }

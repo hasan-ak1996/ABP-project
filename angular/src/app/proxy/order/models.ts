@@ -8,6 +8,7 @@ export interface CreateOrderInputDTO {
   orderDate: string;
   empolyeeName: string;
   totalPrice: number;
+  attachmentMasterId: number;
 }
 
 export interface GetOrderListDto extends PagedAndSortedResultRequestDto {
@@ -24,6 +25,7 @@ export interface OrderDTO extends AuditedEntityDto<number> {
   empolyeeName: string;
   totalPrice: number;
   isSubmit: boolean;
+  attachmentMasterId: number;
 }
 
 export interface UpdateOrderInputDTO {
